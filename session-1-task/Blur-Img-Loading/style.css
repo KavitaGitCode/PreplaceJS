@@ -1,0 +1,31 @@
+* {
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    position:relative;
+}
+
+.bg-img{
+    width:100%;
+    background-image:url("https://img.freepik.com/premium-photo/blue-mural-wallpaper-with-deer-birds-dark-colors-night-stars-beautiful_841543-19137.jpg?w=1060");
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center center;
+    filter: blur(8px);
+}
+
+.loader{
+    color: white; 
+    font-size: 2rem;   
+    position:absolute;
+    opacity: 1;
+    /* filter: blur(0px); */
+}
