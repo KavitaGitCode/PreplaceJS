@@ -1,2 +1,2 @@
 # PreplaceJS
-new repository
+new repository add new thisng
