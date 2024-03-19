@@ -71,6 +71,14 @@ It uses the LIFO principle (Last-In-First-Out). When the engine first starts exe
 # 5. What is Hoisting?
 
 Javascript only hoisted declaration not initialization. Hosting applies to variable declaration and function declaration. Its default behavior of JS where it moves all the declaration to the top of current scope i.t current scope of function or script scope.
+Hoisting is the process where the JavaScript interpreter moves all variable and function declarations to the top of the scope they are declared in. This means that declarations are accessible throughout the scope, but initializations are not.
+
+In the context of programming languages, an interpreter is a software component that executes the code directly, without compiling it first. The interpreter reads the source code, parses it, and then executes it line by line.
+
+JavaScript is an interpreted language, which means that when you run a JavaScript program, the JavaScript engine in your web browser or Node.js interprets the code and executes it directly.
+
+When we say that the JavaScript code is interpreted, we mean that the JavaScript engine reads the source code, parses it, and then executes it line by line. During this process, the engine performs various optimizations, such as hoisting, to make the code more efficient to execute.
+
 
 # 6. What is callback function?
 
@@ -99,7 +107,7 @@ Code Example:
     2. Function Scope: Function scope has local variable so we can't use it  that local var outside of that function scope. THis local variable will be deleted after the completion of function.
     3. Global Scope: If we created any variable on global scope we can access it from any place of that script file or any function scope or any block scope. It’s actually created on global level so u can access it with window key word. But variable created with 'let' you can't access it on window level but variable created with 'var' keyword you can access it.
 
-# 8. What is HOC in JS?
+# 8. What is HOF in JS?
 
 **Notes**
 
