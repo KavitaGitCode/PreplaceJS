@@ -5,7 +5,7 @@ variable defined with 'let' keyword only has block scope (within the nearest con
 variable defined with 'const' keyword also has block scope but cannot be reassigned to a new value.
 
 var : It can be updated and redeclared into the scope and can be declared without initialization.
-let & const: let can be declared without initialization and you can access its value which is 'undefined' but 'const' cannot be declared without initialization will go you an error;
+let & const: let can be declared without initialization and you can access its value which is 'undefined' but 'const' cannot be declared without initialization, it will go you an error;
 
 ```javascript
 let b = 100;
@@ -26,7 +26,7 @@ let c = 50;
 # what is the use of anonymous functions?
 
 An anonymous function is a function that does not have any name associated with it.
-An anonymous function is not accessible after its initial creation,
+An anonymous function is not accessible after its initial creation.
 it can only be accessed by a variable it is stored in as a function as a value.
 
 ## 1. we will store the anonymous function in a variable so that we can call it later if needed.
@@ -48,6 +48,7 @@ square(x);
 ```
 
 ## 2. We can pass anonymous function as arguments to other functions.
+
    example : setTimeout or setInterval or event handlers
    In setTimeout(), which is a method that expects a function and the number of milliseconds after which it will execute the function. Now, let us see how we can pass an anonymous function to setTimeout().
 
@@ -139,7 +140,7 @@ console.log(x); // ReferenceError: Cannot access 'x' before initialization
 const x = 5;
 ```
 
-## hoisting wiht Function Declaration + Function Statement:
+## hoisting with Function Declaration + Function Statement:
 
 Function declarations are hoisted, so you can use them before they’re declared.
 javascript interpreter puts all function declarations at the top of the script,
