@@ -7,4 +7,4 @@ function getKeynCode(event) {
   </div>`;
 }
 
-document.addEventListener("keydown", getKeynCode);
+document.addEventListener("keyup", getKeynCode);

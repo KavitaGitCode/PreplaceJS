@@ -42,3 +42,7 @@ body{
     flex-direction: row;
     justify-content: space-between;
 }
+
+.active {
+  background-color: red;
+}

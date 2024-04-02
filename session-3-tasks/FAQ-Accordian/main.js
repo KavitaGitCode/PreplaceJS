@@ -16,8 +16,17 @@ function removeHideCls(selected, arrowButton) {
 questions.forEach((question, index) => {
   let selectedQuestion = question.querySelector(".question");
   selectedQuestion.addEventListener("click", function () {
+    //should close when click on answer section
     let qestionAns = question.querySelector(".answer");
     let arrowBtn = question.querySelector(".arrow-button");
     showAnswer(qestionAns, arrowBtn);
+    qestionAns.addEventListener("click", function(){
+      let currentTarget = this;
+      /* console.log(currentTarget.classList.contains('show-answer')); */
+      if(currentTarget.classList.contains('show-answer')){
+        removeHideCls(qestionAns, arrowBtn);
+      }
+    });
+    
   });
 });

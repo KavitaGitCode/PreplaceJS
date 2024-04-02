@@ -16,12 +16,18 @@ imgIcon.addEventListener("dragend", dragEnd);
 function dragEnd() {
   imgIcon.classList.remove("replace-img");
 }
+/* 
+imgIcon.addEventListener("dragleave", imgLeave);
 
+function imgLeave(){
+  imgIcon.classList.remove("replace-img");
+}
+ */
 //image drop in imgBox
 imgBox.forEach((box) => {
-  /* box.addEventListener("dragenter", dragenter);
+  /* box.addEventListener("dragenter", dragenter); */
 
-  box.addEventListener("dragleave", dragleave); */
+  box.addEventListener("dragleave", dragleave);
 
   box.addEventListener("dragover", dragover);
 
@@ -33,12 +39,14 @@ imgBox.forEach((box) => {
 function dragenter(event) {
   event.preventDefault();
   event.target.classList.remove("drop-target-border");
-}
+}*/
 
 function dragleave(event) {
   event.preventDefault();
-  event.target.classList.remove("drop-target-border");
-} */
+  console.log(this.innerHTML, 'this');
+event.target.classList.remove("drop-target-border");
+  console.log(event.target, 'parentNode')
+} 
 
 function dragover(event) {
   event.preventDefault();

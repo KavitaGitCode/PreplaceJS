@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul class="list">
+        <li class="myList">One </li>
+        <li class="myList">Two </li>
+        <li class="myList">Three</li>
+        <li class="myList">Four </li>
+        <li class="myList">Five</li>
+    </ul>
+
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+
+
+    <script>
+        const list = document.querySelector('.list');
+        const li = list.querySelectorAll('.myList'); //nodeList...Array Like Property
+        console.log(li);
+       /*  li.forEach((item) => {
+            item.style.color = "blue";
+        });  */
+
+        const liHTML = list.getElementsByClassName('myList'); //HTMLCollectionList ..Array Like Property
+        const convertIntoArray = Array.from(liHTML);
+        console.log(convertIntoArray);
+        convertIntoArray.forEach(function(item){
+            item.style.color = "red"
+        });
+
+        let newElm = document.createElement('h1');
+        newElm.className = "heading";
+        newElm.id = Math.floor(Math.random() * 10 + 1);
+        newElm.setAttribute("title", "gernerate_title");
+        newElm.style.backgroundColor = "Red";
+        newElm.style.color = "white";
+        // newElm.innerText = "Kavita"; //innerText overwrite values...expensive operation
+        let textNode = document.createTextNode("Kavita");
+        newElm.appendChild(textNode);
+        console.log(newElm);
+        document.body.appendChild(newElm);
+
+
+        function addLanguages(language){
+           const li = document.createElement('li');
+           li.innerHTML = `${language}`; //increase dom load
+           document.querySelector('.language').appendChild(li)
+        }
+        addLanguages('python');
+        addLanguages('typescript');
+
+        function addWithOptimise(language){
+           const langUI = document.querySelector('.language');
+           const li = document.createElement('li');
+           li.appendChild(document.createTextNode(language)); //optimise way
+           document.querySelector('.language').appendChild(li)
+        }
+        addWithOptimise("goLang")
+
+      /*   EDIT */
+        const langUI = document.querySelector('.language');
+        const secondLang = langUI.querySelector("li:nth-child(2)");
+        secondLang.innerHTML = "Mojo"
+
+        const addFrist = langUI.querySelector('li:first-child');
+        addFrist.outerHTML = "<li>AWS</li>"
+
+        const lastLang = langUI.querySelector("li:last-child");
+        lastLang.remove();
+    </script>
+</body>
+</html>
