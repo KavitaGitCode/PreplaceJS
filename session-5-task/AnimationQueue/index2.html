@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+       /*  for(var i = 0; i < 5; i++){
+           function close(i){
+                setTimeout(() => {
+                    console.log(i);
+                }, i * 1000);
+           } 
+           close(i);
+        }
+
+        for(let i = 0; i < 50; i += 10){
+            setTimeout(() => {
+                console.log(i, '50 range')
+            }, i * 100);
+        } */
+
+        let frinds = ["ALice", "Bob", "Fat Boys", "Charlie"];
+        let hat = [];
+        frinds.forEach((friend, index) =>{
+            setTimeout(() => {
+                hat.push(friend);
+                console.log(`${friend} has the hat`);
+            }, index * 1000)
+        });
+
+        setTimeout(() => {
+            console.log(hat);
+            hat.forEach((friend, index) => {
+                 setTimeout(() => {
+                    console.log(friend, 'remove hat') 
+                 }, index * 1000)  
+            })
+        }, 5000)
+    </script>
+</body>
+</html>

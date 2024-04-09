@@ -6,7 +6,7 @@ let cal = getHeight/emptyGlass.length;
 
 emptyGlass.forEach((glass, index, array) => {
     glass.addEventListener("click", function(){
-        emptyGlass.forEach(glass => glass.classList.remove('full-of-water'))
+        emptyGlass.forEach(glass => {glass.classList.remove('full-of-water')})
         /* this.classList.add('full-of-water');
         console.log(index);
         console.log(array); */

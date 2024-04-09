@@ -1,4 +1,4 @@
-## Prototype under the hood behaviour
+# Prototype under the hood behaviour
 
 // str (under the hood yeh bhi object h in js Engine (eg-> str.length)) -> Object -> null
 
@@ -6,6 +6,50 @@
 
 // boolean -> Object -> null
 // any datatype -> Object -> null
+
+All JavaScript objects inherit properties and methods from a prototype.
+
+Date objects inherit from Date.prototype
+Array objects inherit from Array.prototype
+Person objects inherit from Person.prototype
+The Object.prototype is on the top of the prototype inheritance chain
+
+Date objects, Array objects, and Person objects inherit from Object.prototype.
+
+1. Javascript is a prototype based language.
+2. When you create a function/object in javascipt, JS engine adds "prototype property" inside these functions/objects.
+3. "Prototype Property" is nothing but "Prototype Object";
+4. when we Prototype Object actually enables other objects to inherit properties and methods from
+
+## passing properties from one object to another or inherit;
+
+```javascript
+let user1 = {
+  reading: true,
+  writing: true,
+  dubbing: false,
+};
+
+let user2 = {
+  listening: true,
+};
+
+Object.setPrototypeOf(user2, user1);
+```
+
+## if you want to create by default method on Object;
+
+```javascript
+let user3 = " objectnewly create";
+
+// newTrim will available on each string object prototype plz chceck pollyfill
+String.prototype.newTrim = function () {
+  console.log(this);
+  return this.trim();
+};
+
+user3.newTrim();
+```
 
 # Constructor vs Object Literal
 
@@ -17,7 +61,11 @@ Constructor function is a special function that used to create and initialize an
 
 In ES5, an object can be created by defining a constructor function and using the new keyword to instantiate the object.
 
-Objects of the same type are created by calling the constructor function with the new keyword:
+Objects of the same type are created by calling the constructor function with the new keyword.
+
+If there is no property directly available in an object then javascript looks up the chain until it finds the property or reaches the end(null)
+
+Each object created using a constructor is unique. Properties can be added or removed from an object without affecting another one created using the same constructor.
 
 check "this.md" file
 
@@ -33,6 +81,7 @@ check "this.md" file
 2. When a constructor function is called with new, it creates a new object and sets the this keyword to point to that newly created object.
 3. Inside the constructor function, you can define properties and methods for the object being created by using this.
 4. The new keyword automatically returns the newly created object from the constructor function. So basically it ensuring that each object is properly initialized with its own properties.
+5. In JavaScript, a constructor gets called when an object is created using the new keyword.
 
 ## example of constructor function
 
@@ -67,14 +116,14 @@ Properties and methods can be added to a constructor using a prototype.
 
 ## "NEW keyword" : what happens when you used new KeyWOrds
 
-1.  A new empty object will be created. : the new keyword initiates the creation of an entirely new object. A new keywords instantiate new object.
-2.  This newly created object will get linked to the prototype property of the constructor function.
-    This means we can access to properties and methods defined on the construction's prototype.
-3.  The constructor function is called: the constructor function is called with specified arguments and this is bound to newly createad object. If no explicit return value is specified from the constructor, Javascript assumes this, the newly created object, to be the intended return value.
-    in simple word:
-    - this (which now refers to the "current context" of newly created object) will get passed into our function.
-    - We can access this through out function's (property n methods) using the this keyword.
-4.  Finally, if there’s no return statement in the constructor function, JavaScript automatically returns the new object.
+1. A new empty object will be created. : the new keyword initiates the creation of an entirely new object. A new keywords instantiate new object.
+2. This newly created object will get linked to the prototype property of the constructor function.
+   This means we can access to properties and methods defined on the construction's prototype.
+3. The constructor function is called: the constructor function is called with specified arguments and this is bound to newly createad object. If no explicit return value is specified from the constructor, Javascript assumes this, the newly created object, to be the intended return value.
+   in simple word:
+   - this (which now refers to the "current context" of newly created object) will get passed into our function.
+   - We can access this through out function's (property n methods) using the this keyword.
+4. Finally, if there’s no return statement in the constructor function, JavaScript automatically returns the new object.
 
 # Classes
 
@@ -83,9 +132,14 @@ ES6 provides a new syntax to create objects, using the class keyword.
 In ES6, a class declaration has a constructor method that is invoked with the new keyword.
 If you do not define a constructor method, JavaScript will add an empty constructor method.
 
-The constructor method is a special method for creating and initializing an object created with a class.
+**Constructor is a special method that called automatically when a new instance of class is created by using "new" keyword. The main purpose of COnstructor method is to initialize the newly created object.
+ They implicitly return the newly created object instance.**
+
+Inside the constructor, the "this" keyword refers to the newly created object instance. This allows you to set properties and perform other operations specific to that instance.
 
 It should be noted that the class keyword declares a new function, to which a constructor is added. This constructor is invoked when new is called to create a new object.
+
+Behind the scence the class is behave like constructor function.
 
 ```javascript
 class Mobile {
@@ -107,6 +161,8 @@ class Mobile {
 
 let samsung = new Mobile("Samsung ", 1938, "Korea");
 let apple = new Mobile("Apple", 1976, "California");
+
+samsung.founder("Kral Chai");
 ```
 
 ## Inheritance
@@ -126,6 +182,8 @@ class SmartWatch extends Mobile {
     this.features = features;
   }
 
+  //you can't use this method outside of class
+  //The static keyword in JavaScript helps you define functions and properties in the class that cannot be called by the instance of the object. They can only be called by the class itself which consists of these static functions and properties.
   static heartBeatFeature() {
     return `${this.features}`;
   }
@@ -145,16 +203,6 @@ appleSmartWatch.yearsInMarket(); // //'newly lanuch smart watch in california'
 //with static
 ref link : https://www.w3schools.com/js/js_class_static.asp
 ```
-
-## Prototype:
-
-     1. If there is no property directly available in an object then javascript looks up the chain until it finds the property or reaches the end(null)
-
-1. If there is no property directly
-
-- In JavaScript, a constructor gets called when an object is created using the new keyword.
--
-- Each object created using a constructor is unique. Properties can be added or removed from an object without affecting another one created using the same constructor. However, if an object is built using an object literal, any changes made to the variable that is assigned the object value will change the original object.
 
 ## Lexical Enviornment
 

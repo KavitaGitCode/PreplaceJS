@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Manipulate DOM: Real World example with curring</p>
+    <h1 id="Heading">Hello Kavita</h1>
+    <script>
+        function changeHeading(id){
+            return function(textCont){
+                document.getElementById(id).textContent = textCont;
+            }
+        }
+        const updateHeader = changeHeading('Heading');
+        updateHeader('Hey Beautiful')
+    </script>
+</body>
+</html>

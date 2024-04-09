@@ -1,3 +1,6 @@
+Ref Link:
+https://frontend.turing.edu/lessons/module-2/scope-2-scopes-and-scope-chain.html
+
 # What is Scope and Explain Scope Chain?
 
 <Answer>

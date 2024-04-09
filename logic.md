@@ -1,0 +1,15 @@
+anylise your problem
+    - data flow ...understand for loop...condition (pen and pencil le ke understnd what will be iterate)
+    - 80% teacher and 20% student.......80% student and 20% teacher
+    - always try to implement on your own
+    - create to dos app (create, read, delete, update, searching, filter, localstorage)
+       -- check mark after complete
+       -- time when added
+       -- how much time it took
+    - Added Value : (Add some features from your own doesn't matters its small or big)
+        - try to make small component
+        - another component
+        - another compoenent
+        - add small small features
+        - build confidence    
+    - 
