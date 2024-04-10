@@ -24,19 +24,19 @@
         } */
 
         let frinds = ["ALice", "Bob", "Fat Boys", "Charlie"];
-        let hat = [];
+        let ball = [];
         frinds.forEach((friend, index) =>{
             setTimeout(() => {
-                hat.push(friend);
-                console.log(`${friend} has the hat`);
+                ball.push(friend);
+                console.log(`${friend} has the ball`);
             }, index * 1000)
         });
 
         setTimeout(() => {
-            console.log(hat);
-            hat.forEach((friend, index) => {
+            console.log(ball);
+            ball.forEach((friend, index) => {
                  setTimeout(() => {
-                    console.log(friend, 'remove hat') 
+                    console.log(friend, 'pass the ball') 
                  }, index * 1000)  
             })
         }, 5000)

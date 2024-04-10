@@ -1,4 +1,6 @@
 const container = document.querySelector('.container');
+/* const SOUND_FILE = `./keys-code/key-$keyEvent === " " ? 'space-bar' : keyEvent.m4a`;  */
+const SOUND_FILE = `./keys-code/key-$keyEvent.m4a`;
 function getKeynCode(event) {
   container.innerHTML = `
   <div class="result">
@@ -13,7 +15,8 @@ function soundHtml(event) {
   let keyEvent = event.key;
   let audioDiv = document.createElement('audio');
   audioDiv.setAttribute('id', keyCode);
-  audioDiv.setAttribute('src', `./keys-code/key-${keyEvent === " " ? 'space-bar' : keyEvent}.m4a`);
+  /* audioDiv.setAttribute('src', `./keys-code/key-${keyEvent === " " ? 'space-bar' : keyEvent}.m4a`); */
+  audioDiv.setAttribute('src', SOUND_FILE.replace('$keyEvent', keyEvent === " " ? 'space-bar' : keyEvent));
   container.appendChild(audioDiv);
   audioDiv.play();
 }

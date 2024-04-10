@@ -2,8 +2,6 @@
 
 In JavaScript, the "this" keyword refers to an object.
 
-## Which object depends on how "this" is being invoked (used or called)
-
 ## The "this" keyword refers to different objects depending on how it is used
 
 ## Suppose you calling "this" inside global scope or Alone.."this" refers to the global object (in browser window)
@@ -14,9 +12,9 @@ In JavaScript, the "this" keyword refers to an object.
 
 ## In an object method, "this" refers to the object
 
-## In JavaScript, constructor functions are used to create objects. When a function is used as a constructor function, this refers to the object inside which it is used
+## Inside the constructor, the "this" keyword refers to the newly created object instance. This allows you to set properties and methods specific to that newly created instance.
 
-## In an event, "this" refers to the element that received the event
+## In an event, "this" refers to the element that received the event.
 
 ## Methods like call(), apply(), and bind() can refer "this" to the refernce object
 
@@ -85,4 +83,4 @@ greet.sayHi(); // Jack
 
 In a constructor function this does not have a value. It is a substitute for the new object. The value of this will become the new object when a new object is created.
 
-Inside the constructor, the "this" keyword refers to the newly created object instance. This allows you to set properties and perform other operations specific to that instance.
+

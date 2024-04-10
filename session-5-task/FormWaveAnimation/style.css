@@ -48,24 +48,24 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-   /*  transition: all .3s ease */
+   transition: transform .2s ease;
 }
-
-/* .form-control input:focus + label,
-.form-control input:valid + label{
-  font-size: 11px;
-  top: -5px
-} */
 
 form{
     width:80%;
 }
 
-  .form-control label span {
+.form-control input:focus + label span {
+    color: blue;
+    transform: translateY(-30%);
+    /* top:0px; */
+} 
+.form-control label.active {
+    color: blue;
+    transform: translateY(-67%);
+   /*  top:0px; */
+} 
+.form-control label span{
     display: inline-block;
+    transition: transform .2s ease-in-out;
 }
-
-.form-control input:focus + .label span {
-    color: blue
-    transform: translateY(-30px);
-}   

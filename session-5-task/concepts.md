@@ -2,12 +2,11 @@
 
 Plz check "this.md"
 
-# first class function in JS
+# Functions are first-class citizens in JavaScript
 
-Functions are first-class citizens in JavaScript.
 You can pass functions to other functions as arguments, return them from other functions as values, and store them in variables.
 
-## 1. The ability to use function as values and Assign function to variable
+## 1. Assign function to variable and use function as values
 
 ```javascript
 const age = function(birthYear){
@@ -48,7 +47,7 @@ newFunc();
 
 /* another example :  Functions that return a function are called Higher Order Functions. */
 function compareBy(propertyName){
-     return functin(a, b){
+     return function(a, b){
         let x = a[propertyName];
         let y = b[propertyName];
 
@@ -68,23 +67,9 @@ let products = [
     {name: 'Sony Xperia', price: 700}
 ];
 console.log('Products sorted by name:');
-products.sort(compareBy['name']);
+products.sort(compareBy('name'));
 
-prodcuts.sort(compareBy['price']);
-```
-
-## 4. Return a function and call using double parentheses
-
-```javascript
-function sayHello() {
-    // returning the function
-    return function() {
-      return 'hey, there there';
-    }
- }
-
-// Calling returned function using double parentheses
-sayHello()();
+prodcuts.sort(compareBy('price'));
 ```
 
 # OOPS and its principles (EAIP)
@@ -188,23 +173,23 @@ newBike.howOld();
 
     ```javascript
     function greeting() {
-    let message = 'Hi';
+        let message = 'Hi';
 
-    function sayHi() {
-        console.log(message);
+        function sayHi() {
+            console.log(message);
+        }
+
+        sayHi();
     }
 
-    sayHi();
-}
-
-greeting();
+    greeting();
     ```
 
 # Closure
 
 ### reflink: <https://www.freecodecamp.org/news/javascript-closures-explained-with-example/#advantages-of-closures>
 
-  Function along with its lexical scope.  
+ Function along with its lexical parent scope.  
 
  Closures are functions that have access to the variables that are present in their (lexical) scope chain even if the outer function ceases(no longer) to exist.
 
@@ -293,6 +278,43 @@ after 3 second(s):3 */
 1. The variables declared inside a closure are not garbage collected.
 2. Too many closures can slow down your application. This is actually caused by duplication of code in the memory.
 3. will negatively affect script performance both in terms of processing speed and memory consumption.
+
+# Curring
+
+Curring means number of arguments has to be equals to the number of function returns.
+Curring create nesting functions, according to the number of the arguments of the functions.
+Each functions receives an arguments. If there is no arguments there is no curring.
+
+Curried functions are constructed by chaining closures and by defining and immediately returning their inner functions simultaneously.
+
+Currying helps you avoid passing the same variable multiple times, and it helps you create a higher order function.
+multiple smaller functions that can handle one responsibility.
+
+```javascript
+//curring functions takes one parameter at a time.
+function sumNew(a){
+    return function(b){
+        return function(c){
+            return a + b + c
+        }
+    }
+}
+/* Currying transforms a function with multiple arguments into a sequence/series of functions, each taking a single argument. */
+console.log(sumNew(5)(5)(10));
+
+/* let's refector of this code  Modern currying with ES6*/
+let buildSanwitch = ingredient1 => ingredient2 => ingredient3 => {
+    return `My sanwitch ingredients is ${ingredient1}, ${ingredient2} and ${ingredient3}`
+}
+
+let mySandW = buildSanwitch('bread')('tomato')('mutton');
+console.log(mySandW);
+
+const multiply = num1 => num2 => num3 => {
+    return num1 * num2 * num3
+}
+multiply(2)(3)(4);
+```
 
 ## Call apply bind
 

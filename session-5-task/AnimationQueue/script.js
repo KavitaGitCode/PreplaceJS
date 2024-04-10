@@ -10,7 +10,7 @@ boxs.forEach((box, index, array) => {
                   removeActiveClassByOrder(array);
                   /* for (let index = 0; index < arr.length; index++) {
                     setTimeout(() => {
-                        console.log(arr, 'befire');
+                        console.log(arr, 'before');
                         let box = arr.shift();
                         console.log(arr, 'after');
                         box.classList.remove("active");
