@@ -4,10 +4,32 @@
 //The bind() method allows an object to borrow a method from another object without copying.
 //Notes: If thisArg is not specified, the this of the executing scope is treated as thisArg.
 
-//bind() method returns a copy of the function with the specific this value (thisArg) and arguments (arg1, arg2, …).
+//  .bind() returns a new function object.
 
 /* The bind() method creates a new function that, when invoked, has the this sets to a provided value.
 The bind() method allows an object to borrow a method from another object without making a copy of that method. This is known as function borrowing in JavaScript. */
+
+function talk(){
+    console.log(this);
+}
+
+let me = {
+    name: "Jack",
+    talk: talk
+}
+
+//whoever on the left side of function invocation is "this" 
+console.log(me.talk()); //{name: 'Jack', talk: ƒ}
+
+
+//another example with bind
+let you = {
+    name: "Gloria"
+}
+
+//whaterver object you pass in to bind will be used as the value "this" inside the 'talk() function'
+const callingYou = talk.bind(you);
+console.log(callingYou()) //{ name: "Gloria"}
 
 const student1 = {
     name: "Kavlita",

@@ -1,12 +1,11 @@
+/* 
 Suppose you have method you want to borrow that method on the object at that time you can use call method. function borrowing refers to an object that uses a method of another object.
 
 `functionName.call(thisArg, arg1, arg2, ...);`
 
 The thisArg is the object that the this object references inside the function functionName.
 The arg1, arg2, .. are the function arguments passed into the functionName.
-example
-
-```javascript
+*/
 var greeting = 'Hi';
 
 var messenger = {
@@ -77,40 +76,8 @@ function isOdd(number){
 //this func. that accepts any number of arguments and returns an array that contains only odd numbers:
 function getOddNumbers(){
         //the arguments object borrows the filter() method of the Array.prototype object.
-       return Array.prototype.filter.call(arguments, isOdd);
+        Array.prototype.filter.call(arguments, isOdd);
 }
 
 let result = getOddNumbers(2, 3, 7, 6, 9, 8, 10)
 console.log(result) // [3, 7, 9]
-
-////////////////////////////////////////////////////////////////////////////////
-
-let cat = {
-  name: "Bob",
-  age: 5,
-  type: "Cat",
-};
-
-let animal = {
-  animalInfo: function (food) {
-    return `Our ${this.type}, ${this.name}, is ${this.age} years old. He likes to eat ${food}`;
-  },
-};
-
-console.log(animal.animalInfo.call(cat, "fish"));
-// Our Cat, Bob, is 5 years old. He likes to eat fish
-
-console.log(animal.animalInfo.apply(cat, ["fish"]));
-// Our Cat, Bob, is 5 years old. He likes to eat fish
-
-const bound = animal.animalInfo.bind(cat);
-console.log(bound("rats"));
-// Our Cat, Bob, is 5 years old. He likes to eat rats
-
-```
-
-The main differences between the three aforementioned methods used for explicit binding are the following:
-
-In order to use call, pass the object and additional parameters as strings
-In order to use apply, pass the object and additional parameters inside of an array.
-The bind function will create a new function whose ‘this’ value can be set to the value providing in the function call.

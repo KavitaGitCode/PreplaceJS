@@ -90,3 +90,9 @@ p{
 } */
 
 //style 2
+
+//4th style
+.parent{
+  display: grid;
+  place-items: center
+} 

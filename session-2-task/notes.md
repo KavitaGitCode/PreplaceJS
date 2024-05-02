@@ -24,6 +24,9 @@ let d = 100;
   console.log(c); //Uncaught SyntaxError: Identifier 'c' has already been declared
 }
 console.log(d) //900 //shadowing
+
+//let abc // undefiend
+//const newMe : Uncaught SyntaxError: Missing initializer in const declaration
 ```
 
 # what is the use of anonymous functions?
@@ -71,7 +74,7 @@ document.getElementById("myButton").addEventListener("click", function () {
 
 ## 3. Immediately Invoked Function Expressions (IIFE):
    Anonymous functions can be used to create IIFE, which execute immediately after being defined.
-   They are often used to create a private scope i.e in local scope and to avoid polluting the global namespace variable, , protect variables, and prevent naming collisions.
+   They are often used to create a private scope i.e in local scope and to avoid polluting the global namespace variable, protect variables, and prevent naming collisions.
    If you want to create a function on-the-fly for short periods of time or don’t need to reference it again.
    example
 

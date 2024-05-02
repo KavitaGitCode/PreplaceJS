@@ -7,6 +7,8 @@
 // boolean -> Object -> null
 // any datatype -> Object -> null
 
+If there is no property directly available in an object then javascript looks up the chain until it finds the property or reaches the end(null)
+
 All JavaScript objects inherit properties and methods from a prototype.
 
 Date objects inherit from Date.prototype
@@ -40,16 +42,18 @@ Object.setPrototypeOf(user2, user1);
 ## if you want to create by default method on Object;
 
 ```javascript
-let user3 = " objectnewly create";
+let user3 = "    objectnewly create";
 
-// newTrim will available on each string object prototype plz chceck pollyfill
+// newTrim will available on each string object prototype plz chceck pollyfill(D:\Preplaced\PreplaceJS\session-4-tasks\Pollyfill)
 String.prototype.newTrim = function () {
   console.log(this);
   return this.trim();
 };
 
-user3.newTrim();
+user3.newTrim(); //'objectnewly create'
 ```
+
+## hasOwnProperty
 
 # Constructor vs Object Literal
 
@@ -172,7 +176,7 @@ Inheritance is useful for code reusability: reuse properties and methods of an e
 1. the child class inherits parent class properties and methods by useing "extends" keyword
 2. By calling the super() method in the constructor method, we call the parent's constructor method and gets access to the parent's properties and methods.
 3. Methods of the parent class can be overridden by the methods of the child class.
-4. Static class methods are defined on the class itself. You cannot call a static method on an object.
+4. Static class methods are defined on the class itself. Create private method. You cannot call a static method on an object.
    if you want to use static method then send it as parameter
 
 ```javascript
@@ -206,7 +210,9 @@ ref link : https://www.w3schools.com/js/js_class_static.asp
 
 ## Lexical Enviornment
 
-Lexical environment is creatd when execution context created. Leaxical is the local memory + refernce to the lexical enviornment of its parent.Lexical Parent Means where that function is actually sits inside that code.
+Lexical environment is creatd when execution context created.
+Leaxical is the local memory + refernce to the lexical enviornment of its parent.
+Lexical Parent Means where that function is actually sits inside that code.
 Local Memory + lexical environment of parent function. And this we called Scope Chain
 
 - Can you explain the concept of scope in JavaScript

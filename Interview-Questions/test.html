@@ -77,7 +77,7 @@
 
         /* another example :  Functions that return a function are called Higher Order Functions. */
 function compareBy(propertyName){
-     return functin(a, b){
+     return function(a, b){
         let x = a[propertyName];
         let y = b[propertyName];
 
@@ -97,9 +97,83 @@ let products = [
     {name: 'Sony Xperia', price: 700}
 ];
 console.log('Products sorted by name:');
-products.sort(compareBy['name']);
+/* products.sort(compareBy['name']);
 
-prodcuts.sort(compareBy['price']);
+prodcuts.sort(compareBy['price']); */
+
+function factorial(num){
+            if(isNaN(num)) throw new Error("This is not a number");
+
+            if(num === 1){
+                return 1
+            } else {
+               /*  debugger */
+                return num * factorial(num - 1);
+             /*    debugger */
+            }
+        }
+      console.log(factorial(5));
+
+      function deepCopy(arr) {
+    // Create an empty array to store the copied elements
+    let copy = [];
+    
+    // Iterate through each element of the original array
+    for (let i = 0; i < arr.length; i++) {
+        // Check if the current element is an array
+        if (Array.isArray(arr[i])) {
+            // If it's an array, recursively call deepCopy to clone the nested array
+            copy[i] = deepCopy(arr[i]);
+        } else {
+            // If it's not an array, simply copy the element
+            console.log(copy[i], 'copy[i]', 'before');
+            console.log( arr[i], 'arr[i]',  'before')
+            copy[i] = arr[i];
+
+            console.log(copy[i], 'copy[i]');
+            console.log( arr[i], 'arr[i]')
+        }
+    }
+    
+    // Return the copied array
+    return copy;
+}
+const originalArray = [1, 2, [3, 4]];
+// Creating a deep copy
+const copiedArray = deepCopy(originalArray);
+
+// Modifying the copied array
+copiedArray[0] = 100;
+copiedArray[2][0] = 300;
+
+// Output
+console.log(originalArray); // Output: [1, 2, [3, 4]]
+console.log(copiedArray);   // Output: [100, 2, [300, 4]]
+
+// Group items on the basis of age of given array of object
+let people = [
+  {name: "ALice", age: 21},
+  {name: "Max", age:20},
+  {name: "Jack", age: 20},
+  {name: "Michel", age: 41}
+];
+
+//2nd solution
+function sameObj(arr){
+  let check = {};
+
+  arr.forEach((item) => {
+    if(!check[item.age]){
+      check[item.age] = [item]
+    } else {
+      check[item.age].push(item)
+    }
+  })
+
+  return check;
+}
+console.log(sameObj(people))
+
     </script>
 </body>
 </html>

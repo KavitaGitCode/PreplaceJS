@@ -73,6 +73,10 @@ prodcuts.sort(compareBy('price'));
 ```
 
 # OOPS and its principles (EAIP)
+OOP (Object oriented programming is a programming paradigm(paradiaem)(model or pattern)). It is specific style to implement certain principles and way of thinking of structuring code.
+
+## why
+Can make your code easier to understand and read.
 
 1.Encapsuliaton 2.Abstraction 3.Inheritance 4.Polymorphism
 
@@ -81,6 +85,7 @@ prodcuts.sort(compareBy('price'));
 Encapsulation is useful in cases where we need certain properties or methods for the inner working of the object, but we don't want to expose that to the exterior. Having private properties/methods ensures we don't "accidentally" expose information we don't want.
 
 ## 2.Abstraction
+Hide all but relevant parts of an Object in order to reduce complexity and increase efficiency…eg : fetch or sort method , we know how to use it but behind the scene we don’t know how private properties and methods are works
 
 ## 3.Inheritance
 
@@ -187,7 +192,7 @@ newBike.howOld();
 
 # Closure
 
-### reflink: <https://www.freecodecamp.org/news/javascript-closures-explained-with-example/#advantages-of-closures>
+### ref link: https://www.freecodecamp.org/news/javascript-closures-explained-with-example/#advantages-of-closures
 
  Function along with its lexical parent scope.  
 
@@ -195,7 +200,7 @@ newBike.howOld();
 
  Scope chain refers to the fact that parent scope does not have access to the variables inside its children's scope, but the children's scope does have access to the variables present in its parent scopes.
 
- closures do not store static values. Instead, they store references to the variables present inside the scope chain. In this way, even if the outer function dies, the inner function, that is a closure, still has access to its parent variables.
+ closures do not store static values. Instead, they store references to the variables present inside the lexical scope chain. In this way, even if the outer function dies, the inner function, that is a closure, still has access to its parent variables.
 
 ## closure has scope chain
 
@@ -260,7 +265,6 @@ for(var index = 1; index <= 3; index++){
    close(index)
 }
 
-
 /* after 1 second(s):1
 after 2 second(s):2
 after 3 second(s):3 */
@@ -285,7 +289,9 @@ Curring means number of arguments has to be equals to the number of function ret
 Curring create nesting functions, according to the number of the arguments of the functions.
 Each functions receives an arguments. If there is no arguments there is no curring.
 
-Curried functions are constructed by chaining closures and by defining and immediately returning their inner functions simultaneously.
+Curried functions are constructed by chaining closures and by defining and immediately returning their inner functions simultaneously (एकाच वेळी).
+
+## Advantage of Curring
 
 Currying helps you avoid passing the same variable multiple times, and it helps you create a higher order function.
 multiple smaller functions that can handle one responsibility.
@@ -314,7 +320,17 @@ const multiply = num1 => num2 => num3 => {
     return num1 * num2 * num3
 }
 multiply(2)(3)(4);
+
+function add1(num1){
+    return function (num2){
+        return function(num3){
+            return num1 + num2 + num3
+        }
+    }
+}
+let getSum = add1(1)(2)(3)
 ```
 
 ## Call apply bind
+please check call.js | apply.js | bind.js
 

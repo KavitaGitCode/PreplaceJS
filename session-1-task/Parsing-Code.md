@@ -23,7 +23,7 @@ After parsing the line, the engine creates a new variable x in the current scope
 
 In summary, parsing is the process where the JavaScript engine analyzes the syntax and structure of a line of code to understand what it is supposed to do. This includes checking for correct variable declarations, function definitions, and statement syntax. The engine also performs various optimizations, such as hoisting, during parsing.
 
-interpretation is the process where the JavaScript engine reads the source code, parses it, and then executes it line by line, without compiling it first. The example code demonstrates how the JavaScript engine interprets the code and executes it step by step.
+**interpretation** is the process where the JavaScript engine reads the source code, parses it, and then executes it line by line, without compiling it first. The example code demonstrates how the JavaScript engine interprets the code and executes it step by step.
 
 the JavaScript engine interprets the code line by line, parsing and executing each line as it goes. This is in contrast to compiled languages, where the code is first translated into machine code by a compiler, and then executed by the computer's CPU.
 
@@ -37,4 +37,13 @@ The engine executes the console.log function and outputs the string "Hello, worl
 The engine reads the second line of the code, let message = "Interpreted languages are cool!";.
 
 and so on..
+
+# What is interpretor and Compiler and Assemblar
+System understand machine code language(binary code...000's and 11111)... when we write the code its difficult for us to write code in machine code.
+    So they create "Assembly Language" like (2 Add 2 eq ) but still now we want to convert assembly to machine code we need transpiler ...i.e Assembler..but still we faced complex
+
+    Interpretor:
+    System understand you code in machine language....so to convert this machine code we have interpretor
+    Interpritor : Whatever language you used ....with that language we interprate into machine code
+    Compiler:
 

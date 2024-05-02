@@ -7,6 +7,8 @@
         let abc = 'abc';
         })();`;
     4. Arrow Function: (short syntax for writing function expressions)
+    5. Constructor function
+    6. methods in OBjects
 
 # 2. CRP critical rendering path explain?
 
@@ -64,9 +66,13 @@ It has two phases
 There global execution context, its created when a JavaScript script first starts to run, and it represents the global scope in JavaScript.
 
 **Call Stack**
-Call stack is present inside JS engine to manage the execution of function calls. It keeps track of all execution context to currently running functions and allow JS to manage function calls in LIFO manner
+
+Call stack is present inside JS engine to manage the execution of function calls. It keeps track of all execution context to currently running functions and allow JS to manage function calls in LIFO manner.
 
 It uses the LIFO principle (Last-In-First-Out). When the engine first starts executing the script, it creates a global context and pushes it on the stack. Whenever a function is invoked, similarly, the JS engine creates a function stack context for the function and pushes it to the top of the call stack and starts executing it.
+
+### what is JS engine
+It's the thing that takes our JavaScript and executes it while browsing with Chrome. V8 is the JavaScript engine i.e. it parses and executes JavaScript code.
 
 # 5. What is Hoisting?
 
@@ -79,10 +85,9 @@ JavaScript is an interpreted language, which means that when you run a JavaScrip
 
 When we say that the JavaScript code is interpreted, we mean that the JavaScript engine reads the source code, parses it, and then executes it line by line. During this process, the engine performs various optimizations, such as hoisting, to make the code more efficient to execute.
 
-
 # 6. What is callback function?
 
-A function which takes another function as an argument and execute it after specific task is called call back function. Its most probably used in Async Programming for handle task such as event handling and async I/O operations.
+A function which we passed to the another function as argument and perform some operations is known as callback function. Its most probably used in Async Programming for handle task such as event handling and async I/O operations.
 Code Example:
 
 ```python
@@ -96,7 +101,7 @@ Code Example:
         callbackFunc(result);
    }
 
-   calculationTask(5, 7, outputDiv);
+   calculationTask(5, 7, outputDiv)
 ```
 
 # 7. What is Scope?

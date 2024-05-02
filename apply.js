@@ -3,7 +3,7 @@
 //The apply in Javascript accepts two arguments,
 //the "this" value (object on which the function is to be called)
 //the list of the arguments (optional) that will be passed to the method it calls (fn).
-// apply method immediately execute the function
+//call and apply method immediately execute the function. doesn't return another function.
 //The apply() method is used for different use-cases like function borrowing, appending two arrays, etc.
 
 //1. apply() Method to Call a Function

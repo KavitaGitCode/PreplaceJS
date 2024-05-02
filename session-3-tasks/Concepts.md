@@ -12,12 +12,12 @@ In other words, Scope will help us to determine a given part of a code or a prog
 
 When js programe runs global execution context created and it is put inside "call stack".
 
-Whenever function execution context created at that time 'Lexical Environment' will create for that function, In contains local memory and lexical environment of its parents refernce. It stores the reference to all the available variables and functions Records. THe `function b` lexically sitting inside `function a`. where that code is present inside the scope.
+Whenever, function innovke, a new function execution context created at that time 'Lexical Environment' will create for that function, In contains local memory and lexical environment of its parents refernce. It stores the reference to all the available variables and functions Records. THe `function b` lexically sitting inside `function a`. where that code is present inside the scope.
 
 ## Scope CHain
 JavaScript engine uses scopes to find out the exact location or accessibility of variables and that particular process is known as Scope Chain.
 
-Example : Suppose if you try to access a variable or function inside a particular scope and if that variable is not inside that local scope, so JS engine keeps on searching the lexical environemnt of its parent until it finds the variable or function being accessd. This mechanism by which JavaScript Engine searches or (way of finding variable inside its lexcial scope) for variables within the code that it executes is known as Scope Chain.  
+Example : Suppose if you try to access a variable or function inside a particular scope and if that variable is not inside that local scope, so JS engine keeps on searching the lexical environment of its parent until it finds the variable or function being accessd. This mechanism by which JavaScript Engine searches or (way of finding variable inside its lexcial scope) for variables within the code that it executes is known as Scope Chain.  
 If the variable accessed is not found in the Scope Chain, then you will get the variable is not defined error in the browser's console. Please check below code.
 
 If js engine doesn't find anything in local memory of function then it will look into outer function for that, and if it not found in it then it goes to next level of scope and eventually it reach to the globalscope.
@@ -126,7 +126,7 @@ Local Memory + lexical environment of parent function. And this we called Scope 
 - Call stack keeps monitoring the function execution.
 - Once Function Execution Context get removed from call stack then it destroyed.
 - Maximum depth of call stack is 10 million. But JavaScript engine can handle upto 500 million calls.
-- LIFO: Last In First Out: Call stack is keeping track of which function exectuion. context should go first so that it can clean up after its execution. So that it can return back to previous function after completion of current function.
+- LIFO: Last In First Out: Call stack is keeping track of which function execution. context should go first so that it can clean up after its execution. So that it can return back to previous function after completion of current function.
 
 ## Event Loop
 
