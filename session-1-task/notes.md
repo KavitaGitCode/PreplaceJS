@@ -76,7 +76,12 @@ It's the thing that takes our JavaScript and executes it while browsing with Chr
 
 # 5. What is Hoisting?
 
+Hoisting is the javascript default beheviour where all Javascript variable and function declaration move to the top of the containing scope during compliation phase. Hosting is possible for the declaation not for the initialization.
+
+exaplain the mechanim: execution context
+
 Javascript only hoisted declaration not initialization. Hosting applies to variable declaration and function declaration. Its default behavior of JS where it moves all the declaration to the top of current scope i.t current scope of function or script scope.
+
 Hoisting is the process where the JavaScript interpreter moves all variable and function declarations to the top of the scope they are declared in. This means that declarations are accessible throughout the scope, but initializations are not.
 
 In the context of programming languages, an interpreter is a software component that executes the code directly, without compiling it first. The interpreter reads the source code, parses it, and then executes it line by line.

@@ -81,9 +81,10 @@ const clickHandle = () => {
  console.log(sumOfPositiveNum([1, -2, 3, -4, 5])) //9
  console.log(sumOfPositiveNum([-1,-2, 3]))
 
-
+/* 
 function isPalindrom(strg) {
-    let clearText = strg.toLowerCase().replace(/[^a-z0-9)]/g,'');
+    let clearText = strg.map((item) => item.toLowerCase().replace(/[^a-z0-9)]/g,''))
+    console.log(clearText, 'clearText')
     let getPalindromText = clearText.split('').reverse().join('');
     if(clearText === getPalindromText){
         return true;
@@ -101,4 +102,54 @@ function testPalindromText(text){
     return newFilterList;
  }
 
- console.log(getPalidromArr(["racecar", "hello", "level", "12321", "A man, a plan, a canal, Panama!"]))
+ console.log(getPalidromArr(["racecar", "hello", "level", "12321", "A man, a plan, a canal, Panama!"])); */
+
+ //given string, reverse each word in the sentence 
+ let stringTxt = "Welcome to this Javascript Guide"; //emocleW ot siht tpircsavaJ ediuG
+
+ function reverseString(strg, seperator){
+    return strg.split(seperator).reverse().join(seperator);
+ }
+
+ let reverseEntrieArr = reverseString(stringTxt, " ");
+
+ let resultReverseWordStrg = reverseString(reverseEntrieArr, '');
+
+ console.log(resultReverseWordStrg) //emocleW ot siht tpircsavaJ ediuG
+
+ //How would you check if number is an integer
+ const isInteger = (num) => num % 1 === 0;
+ console.log(isInteger(3)) //true
+ console.log(isInteger(3.9)) //false
+
+//
+ let inputStack = [];
+ let outputStack = [];
+
+ //Enqueue...add in arr
+ function enQueue(arr, newArr){
+    return arr.unshift(newArr)
+}
+
+ function deQueue(inputArr, outputArr){
+    if(outputArr.length <= 0){
+        while(inputArr.length > 0){
+            let element = inputArr.pop();
+            outputArr.push(element)
+        }
+    }
+
+    return outputArr.pop();
+}
+
+enQueue(inputStack, 2);
+enQueue(inputStack, 4);
+enQueue(inputStack, 5);
+enQueue(inputStack, 7);
+enQueue(inputStack, 34);
+enQueue(inputStack, 12);
+enQueue(inputStack, 90);
+deQueue(inputStack, outputStack)
+deQueue(inputStack, outputStack)
+console.log(inputStack)
+console.log(outputStack);

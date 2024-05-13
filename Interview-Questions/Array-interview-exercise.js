@@ -189,6 +189,7 @@ function flatArrFun(arr, level){
 console.log(flatArrFun(nestedArr, Infinity));
 
 /* Array Chunking:
+reflink: https://www.geeksforgeeks.org/split-an-array-into-chunks-in-javascript/
 Write a function that splits an array into chunks of a specified size. For example, [1, 2, 3, 4, 5, 6, 7] split into chunks of size 3 becomes [[1, 2, 3], [4, 5, 6], [7]].  */
 
 let arrNew1= [1, 2, 3, 4, 5, 6, 7];

@@ -64,8 +64,21 @@
                 return num * factorial(num - 1);
             }
         }
-        factorial(5)
+        factorial(5) //5*4*3*2*1 : 120
       
+        //new eg
+        function getMaxLessThanK (n,k){
+    let max = 0;
+    for(let i = 1; i<= n; i++){
+        for(let j = i+1; j <= n; j++){
+            if((i&j)<k) max = Math.max(max,i&j);
+        }
+    }
+    console.log(max);
+    return max;
+}
+
+getMaxLessThanK(5, 2)
     </script>
 </body>
 </html>

@@ -14,11 +14,22 @@ In a given part of code or program, scope helps us to detemine, what variables a
 
  Js engines uses scope to manage the variable accessibility.
 
+ . Block Scope: it typically define by '{}' curly braces. Block is which where we wrapping multiple js statements and group together For Eg: for loop, or if else condition. 'let' and 'const' also has block scope.
+    2. Function Scope: Function scope has local variable so we can't use it  that local var outside of that function scope. THis local variable will be deleted after the completion of function.
+    3. Global Scope: If we created any variable on global scope we can access it from any place of that script file or any function scope or any block scope. It’s actually created on global level so u can access it with window key word. But variable created with 'let' you can't access it on window level but variable created with 'var' keyword you can access it.
+
 # What is Lexical Scope
     Lexcial means where the variable is inheritantly sitting inside source of code.
 
 # What is Lexical Environemnt
-   When we innovke function, function execution context is created and put inside call stack. When function execution context created at that time lexical environment is also created. It contains local memory of that function plus its parents lexical environment. It stores, all variables and functions reference records of its parents lexcial scope.
+   When we innovke function, function execution context is created and put inside call stack. When function execution context created at that time lexical environment is also created.
+   It contains local memory of that function plus its parents lexical environment. 
+   It stores, all variables and functions reference records of its parents lexcial scope.
+
+   short:
+   when? FI...FEC...and put in call stack..when FEC create at that time Lexcical ENV create
+   contains: LM + IPLE
+   Store: V & FRR of LPS
 
 # what is Scope CHain
 example:
@@ -41,6 +52,12 @@ If js engine doesn't find anything in local memory of function then it will look
 
     - A closure is a function that preserves the outer scope in its inner scope.
     - The closure is created when a child functions to keep the environment of the parent’s scope even after the parent’s function has already executed.
+
+    Short: 
+    1. What: F Along with LX:ENV bundle...simple term ...we can access OFS from IFS..
+    2. IFS preserve OFS even if the parent func is already EXECUTED (IMP) 
+    3. HoW: closure store (Ref T V) present inside the LSC *****IMP
+
  
 
 ```javascript
@@ -61,11 +78,39 @@ hi(); // calling the function
 **Advantage**: data encapsuliation and data privacy...They allow you to attach variables to an execution context...variable is state that you can use later.
 **Disadvantage**: vairblae declare inside the closure are not grabage collected. so  its affect script performance both in terms of processing speed and memory consumption will slow down your application.
 
-# What is Curring?
-Curring means number of arguments has to be equals to the number of function returns;
-Curring transform functions with multiple arguments into sequence of functions, each taking single arguments. If there is no arguments there will be no curring.
+# setTimeout with Closure
 
-Curring functions are constructed by chiaining closure and by defining and immediately returning their inner functions simultaneously.
+```javascript
+for(var i=0;i<5;i++){
+  setTimeout(()=>console.log(i), 2000);// 5 5 5 5 5
+}
+
+//Why this happens?
+  1. when we used setTimeout function..its async operation to take some time to perform.
+  2. loop continues to execute without waiting for the timeouts to finish. 
+  3.  By the time the timeouts execute, the loop has already finished 
+  4. value of (i is 5) in all the timeout callbacks because the loop has already completed its iterations.
+
+//SOLUTION
+  1. One way to fix this is to use a closure to capture the current value of i for each iteration. 
+
+for(var i = 0; i < 5; i++){
+  (function(currentIndex){
+    setTimeout(() => {
+      console.log(currentIndex)
+    }, currentIndex * 1000)
+  })(i)
+}
+
+//each iteration creates its own closure, capturing the value of i at that moment in time, and the correct value of i will be logged after the respective delay.
+```
+
+
+# What is Curring?
+  Its a technique of evaluating function with single / multiple arguments into sequence of functions with single /multiple arguments.
+ If there is no arguments there will be no curring.
+
+Curring functions are constructed by chiaining closure and immediately returning their inner functions simultaneously.
 
 ### advantage of curring?
     1. it helps to avoid passing same variables multiple times
@@ -157,6 +202,45 @@ var : you can redeclared and update it,  into the scope. It can be declare witho
 let : let can be declared without initialization and you can access its value which is 'undefined';
 Const: but if you declare variable with "const" keyword without initialization will give you syntax error of missing initialization
 
+ let and const declarations are also hoisted but with a subtle difference. They are hoisted, but they are not initialized. In other words, you can't access their value before the declaration. 
+
+GLobal Scope ---> Global (Window Object ...Browser) + Script (local scope...local memory)
+
+function scope:
+
+block scope: let and const///like var the predefined value or placeholder is undefiend
+ for let and const....value "unavailable" is placeholder
+
+ let and const are hoisted.
+ If you try to access (const) before initialization will give an error .
+ As they are in TDZ:
+
+# const doesn't make the variable immutable, it just prevents reassignment of the variable itself.
+
+In JavaScript, the const keyword is used to declare a constant variable, which means that its value cannot be reassigned after it's initialized.
+
+ you can't reassign a const variable, you can still modify its properties if it's an object or array.
+for eg:
+```javascript
+const x = 5;
+x = 10; // This will throw an error because you're trying to reassign a const variable
+
+//However, if x is an object or an array, you can still modify its properties or elements:
+
+const obj = { key: 'value' };
+obj.key = 'new value'; // This is allowed
+
+const arr = [1, 2, 3];
+arr.push(4); // This is allowed
+
+
+```
+
+
+## What is temporal Dead Zone?
+  .if the variable declare with "let" and "Const" ...and In memory creation phase.....will get  value unavilable for these variable ...and in code execution when it reaches to the line of intialization...the time btween the declaration varaible (with let and const) and initialization(actual value assgine) of let and const...that time zone is Temporal dead zone. Thats why you are not able to handle the
+ 
+
 ```javascript
 //let abc // undefiend
 //const newMe : Uncaught SyntaxError: Missing initializer in const declaration
@@ -164,21 +248,46 @@ Const: but if you declare variable with "const" keyword without initialization w
 ```
 
 # What is shadowing and illegal shadowing?
+
+## Shadowing
 Shadowing is happend when variable declare with the same name in certain scope. Suppose if we declare a variable in outer scope and we declare variable with the same name in the inner scope. then the outter scope variable will be shadow by inner scope variable. 
 
+```javascript
+//shadowing example
+let a = 5;
+{
+  a = 10
+  console.log(a) //10
+}
+console.log(a) //10
+```
+
+## Illegal SHadowing
 In JavaScript, variables can be shadowed in both the global and function scope. Global variables can be shadowed by function-scoped variables, and function-scoped variables can be shadowed by block-scoped variables declared with the let or const keyword.
+
+```javascript
+let b = 10;
+{
+  var b = 34; //this is illegal shadowing..Uncaught SyntaxError: Identifier 'b' has already been declared
+  console.log(b) 
+}
+ console.log(b)
+```
+let a < var a //Uncaught SyntaxError: Identifier 'b' has already been declared
+
+var n < let n /// will work not giving any error
 
 for example please check : PreplaceJS\session-2-task\notes.md example.
 
 # what is the use of anonymous functions?
 
-1. We can stroe anonymous function in variable and use as value later on.
+1. We can store anonymous function in variable and use as value later on.
 2. we can pass anonymouse function as an argument to another function.
     eg: setTimeout or setInterval or event handlers
 3. Anonymous functions can be used to create IIFE(Immediately Invoked Function Expressions ), which execute immediately after being defined.
     Benefits
     1. Create complete new scope (we can create private "Declaration of Private variable")
-    2. Data Hiding and Encapsuliation
+    2. Data Hiding and Encapsuliation...IMP
     3. avoid polluting the global namespace variable
     4. prevent naming collisions
     5. it will help to create function on the fly.
@@ -212,7 +321,7 @@ let name; //undefined
 
 # CRP (Critical Rendering Path)
 (SS) Sequence of Steps taken by bowser? where browser goes through to convert? kay?
-ht HTML,CSS, Javascript of webPage into (kashat) Pixels on the screen.
+ HTML,CSS, Javascript of webPage into (kashat) Pixels on the screen.
 it has 5 steps
 1. DOM TREE Creation: Browser  read hte Row DOM tree and create structure of DOM TREE
 2. CSSOM TREE Creation: The browser reads the CSS: Inline, internal External and construct CSSDOM
@@ -267,7 +376,7 @@ Properties and methods can be added to a constructor using a prototype.
 
 1. Inside the constructor function, you can define properties and methods for the new object being created by using this.
 2. And we used "new" keyword to create new instance of object.
-3. "NEW keyword" : what happens when you used new KeyWOrds (read : 1, 2, 3 points)
+3. "NEW keyword" : what happens when you used new KeyWOrds (read : 1, 2, 3 points of new Kayword)
 4. So basically it ensuring that each object is properly initialized with its own properties.
 
 ## "NEW keyword" : what happens when you used new KeyWOrds
@@ -343,7 +452,7 @@ When we use "use strict"; at the begining of code, Strict mode applies certain r
 1. Your codes prevents using variables before they were delcared, 
 2. Helping to avoid potential Hoisting-Related issue.
 
-# THIS explain
+# THIS explain 
 please read PreplaceJS\this.md and PreplaceJS\this-aman.js
 
 # What do you mean by NULL in JavaScript?
@@ -354,3 +463,42 @@ please read PreplaceJS\this.md and PreplaceJS\this-aman.js
  Do the practice for Code...
  PreplaceJS\session-4-tasks\Pollyfill\test.js
 
+
+ # what is the difference between conversion and cohersion
+
+ ## cohersion : because javascipt is loosely type language
+ means you unintentionally change the type or value (one data type is changing to another data type)
+
+```javascript
+ let name="Kavita"
+ name = ['Kaavya']
+```
+
+## Conversion : we want to change the type  
+let a = 8;
+let c = String(a)...using inbuild method and change data type
+
+
+# Explain OOPS
+
+# Types of Errors in javascript
+Syntax Error
+Refernce Error
+Runtime Error
+
+# What are the new features available in ES:6 and ES7?
+
+# What is synchronous?
+When programe or say peice of code run line by line(one line at a time) and each line wait for next line...you are running Synchronous Code
+
+# What is Asynchronous?
+the code that spins off  into its own direction independentally from the rest of your code...you are writing Aysnchronous Code
+eg. setTimeout()...addEventListenet("click" , function);
+Data Fetching
+Calling Backend API's
+Loading Files
+Timers and Intervals
+
+# Callback Hell
+Is happend when you have more than a few things that depend on each other...it can difficult to read..
+callling function to another function and that function is calling another function. We also called it Pyramid Doom

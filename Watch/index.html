@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .showColorPalate{
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <h1>TIME</h1>
+    <p class="time"></p>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+
+    <hr>
+<h2>Change Random COlor</h2>
+<div class="showColorPalate"></div>
+<button id="startColorPalate">Start</button>
+<button id="stopColorPalate">Stop</button>
+
+
+    <script>
+        let showTime = document.querySelector('.time');
+        function startWatch(){
+            let getDate = new Date();
+            showTime.textContent = getDate.toLocaleTimeString();
+        }
+
+        document.querySelector('#start').addEventListener("click", function(){
+            startTime = setInterval(startWatch, 1000);
+        })
+
+        document.querySelector("#stop").addEventListener("click", function(){
+            clearInterval(startTime)
+        })
+
+        //for color pallate
+        let colorPalatePanal = document.querySelector(".showColorPalate");
+        function generateRandomCOlor(){
+            let hex = '0123456789ABCDEF';
+            let color = "#";
+            for (let index = 0; index < 6; index++) {
+                color += hex[Math.floor(Math.random() * 16)]
+            }
+            return color;
+        }
+
+        let changeBgColor;
+        function startColorChange(){
+            colorPalatePanal.style.backgroundColor = generateRandomCOlor()
+        }
+
+        document.querySelector("#startColorPalate").addEventListener("click", function(){
+            if(!changeBgColor){
+                changeBgColor = setInterval(startColorChange, 1000)
+            }
+           
+        })
+
+        document.querySelector("#stopColorPalate").addEventListener("click", function(){
+            clearInterval(changeBgColor);
+            changeBgColor = null;
+        })
+    </script>
+</body>
+</html>

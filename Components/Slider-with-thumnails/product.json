@@ -1,0 +1,28 @@
+{
+    "products": [
+        {
+            "name": "ANNI DESIGNER Women's Cotton Blend Straight Printed Kurta with Palazzo",
+            "price": 549,
+            "mrpprice": 2599,
+            "img": "https://m.media-amazon.com/images/I/61SgADmAyDL._AC_SY350_.jpg"
+        },
+        {
+            "name": "GoSriKi Women Kurta with Palazzo",
+            "price": 499,
+            "mrpprice": 2599,
+            "img": "https://m.media-amazon.com/images/I/71BLkd39VKL._AC_SY350_.jpg"
+        },
+        {
+            "name": "GoSriKi Women Kurta with Pant & Dupatta",
+            "price": 799,
+            "mrpprice": 3599,
+            "img": "https://m.media-amazon.com/images/I/61nCJ7mqXFL._AC_SY350_.jpg"
+        },
+        {
+            "name": "GRECIILOOKS Women's Kurta Set",
+            "price": 519,
+            "mrpprice": 2999,
+            "img": "https://m.media-amazon.com/images/I/61PheLoGzNL._AC_SY350_.jpg"
+        }
+    ]
+}

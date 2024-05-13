@@ -172,8 +172,39 @@ function sameObj(arr){
 
   return check;
 }
-console.log(sameObj(people))
+console.log(sameObj(people));
 
+
+let inputStack = [];
+ let outputStack = [];
+
+ //Enqueue...add in arr
+ function enQueue(arr, newArr){
+    return arr.unshift(newArr)
+}
+
+ function deQueue(inputArr, outputArr){
+    if(outputArr.length <= 0){
+        if(inputArr.length > 0){
+            let element = inputArr.pop();
+            outputArr.push(element)
+        }
+    }
+    //return outputArr;
+    return  outputArr.pop();
+}
+
+enQueue(inputStack, 2);
+enQueue(inputStack, 4);
+enQueue(inputStack, 5);
+enQueue(inputStack, 7);
+enQueue(inputStack, 34);
+enQueue(inputStack, 12);
+enQueue(inputStack, 90);
+deQueue(inputStack, outputStack)
+deQueue(inputStack, outputStack)
+console.log(inputStack)
+console.log(outputStack);
     </script>
 </body>
 </html>
