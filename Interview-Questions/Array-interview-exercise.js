@@ -1,6 +1,6 @@
 //Asked in interview
 //ref Link : https://irmakesin.medium.com/mid-level-javascript-interview-questions-solutions-about-arrays-632297098ab8
-//create your own flat method
+//create your own flat method (Asked in interview)
 [1, [2, [3, [4, [5, [[[6]]]]]]]].flat(Infinity);
 
 function flat(arr, level) {
@@ -21,6 +21,34 @@ const arr = [1, 2, 3, 3, 4, 5, 5];
 
 const uniqueArr = [...new Set(arr)];
 console.log(uniqueArr, 'uniqueArr');
+
+//Another Tech Mahindra Interview Questions
+let arrTech = [4,5,6,7,4,8,9,7];
+
+function repeatArr(arr){
+  let obj = {};
+  arr.forEach((item) => {
+    if(obj[item]){
+      obj[item] += 1;
+    } else {
+      obj[item] = 1;
+    }
+  });
+  //return obj //{ '4': 2, '5': 1, '6': 1, '7': 2, '8': 1, '9': 1 }
+
+  // Filter the object to only include items with a count greater than 1
+  let repeateArrItem = {};
+  for(let key in obj){
+    /* console.log(key, obj[key], 'newly added') */
+    //obj[key] ...value 2..1..2... key... 4, 5, 6
+    if(obj[key] > 1){
+      repeateArrItem[key] = obj[key]
+    }
+  }
+  console.log(repeateArrItem);
+}
+
+repeatArr(arrTech);
 
 // How can you flatten a nested array into a single flat array?
 const arr1 = [1, [2, 3], [4, [5, 6]]];

@@ -10,6 +10,8 @@ https://blog.stackademic.com/tricky-javascript-interview-questions-which-you-don
 # Must know the theory Questions (plz look in : PreplaceJS\JS-Interview-Questions.md)
 https://www.interviewbit.com/javascript-interview-questions/
 
+https://linktr.ee/hiten.codes (please check this link)
+
 
 ## JavaScript Coding Interview Questions
 
@@ -61,6 +63,14 @@ https://www.interviewbit.com/javascript-interview-questions/
 
 8. https://medium.com/@francesco.saviano87/javascript-objects-10-real-world-exercises-c4fe8c206edd
 
+9. https://edabit.com/  (challenges all level)
+
+10. https://www.frontendmentor.io/challenges (project idea)
+
+# React Testing Library
+
+https://www.youtube.com/watch?v=xntMzZ5S1N0&list=PL8p2I9GklV47ZpFC9sNHTXwJRgwwzdkNG
+
 ## DSA
 
 Custom Data Structure
@@ -82,5 +92,11 @@ https://github.com/FrontendFreaks/DSA-in-JavaScript : Repo (Please)
 https://github.com/FrontendFreaks/DSA-in-JavaScript/tree/main/String
 Video...Make Notes....Practice Code and Question
 
+https://egghead.io/lessons/javascript-priority-queue-javascript-data-structure
+
 https://www.jschallenger.com/
+
+https://app.codility.com/programmers/lessons/1-iterations/ (we have PDF as well)
+path : C:\Users\ghatg\Desktop\Download-Desk\PDF\DSA
+
 

@@ -1,28 +1,14 @@
-const COUNTRIES = ["germany", "france", "argentina", "colombia"];
-const container = document.querySelector(".container");
-const row = document.querySelector(".row");
-document.addEventListener("dblclick", function () {
-  removePreviousCountry();
-  const country = getCountry();
-  container.classList.add(`${country}`);
-  addCountryName(country);
+let countryFlag = ["Armenia", "Belgium", "Colombia", "Estonia"];
+let container = document.querySelector(".container");
+
+function flagHtml() {
+    let flagName = Math.floor(Math.random() * countryFlag.length);
+    let element = `<h3>${countryFlag[flagName]}</h3><div class="flag ${countryFlag[flagName]}"></div>`;
+    return element;
+}
+
+document.body.addEventListener("dblclick", function(){
+    container.innerHTML = "";
+    container.insertAdjacentHTML("beforeend", flagHtml());
 });
 
-function getCountry() {
-  return COUNTRIES[Math.floor(Math.random() * COUNTRIES.length)];
-}
-
-function removePreviousCountry() {
-  container.className = "container";
-}
-
-function addCountryName(country) {
-  setTimeout(() => {
-    row.classList.add("active");
-    row.innerHTML = country.toUpperCase();
-  }, 0);
-
-  setTimeout(() => {
-    row.classList.remove("active");
-  }, 1000);
-}

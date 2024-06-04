@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //merge sorted array
+        let arr1 = [1,2,3,0,0,0]
+        let arr2 = [2,5,6]
+
+        console.log(arr1.concat(arr2))
+        let mergeArr = arr1.concat(arr2).filter((item) => item > 0).sort((a, b) => a - b);
+        console.log(mergeArr);
+
+        //remove array
+        let nums = [3,2,2,3];
+        let val = 3;
+        function removeElements(arr, target){
+            let result = [];
+            let count = 0;
+            arr.forEach((element, index) => {
+                if(element !== target){
+                   result.push(element)
+                } /* else {
+                    count++
+                } */
+            });
+           
+          /*   for(let i = 0; i < count; i++){
+                result.push('_')
+            }
+ */
+            console.log(result);
+            return result;
+        }
+        removeElements(nums, val);
+
+        //remove dublicates
+        let numsDublicate = [0,0,1,1,1,2,2,3,3,4]
+
+        let unique = [... new Set(numsDublicate)]
+
+        console.log(unique)
+
+        function removeDublicate(arr){
+            let newArr = [];
+            arr.forEach((item, index) => {
+                if(arr.indexOf(item) === index){
+                    newArr.push(item);
+                }
+            })
+            console.log(newArr);
+            return newArr;
+        }
+        removeDublicate(numsDublicate);
+
+        function anotherMethodRemoveDublicateArray(arr){
+            let newArr = [];
+            arr.forEach((item) => {
+                if(!newArr.includes(item)){
+                    newArr.push(item);
+                }
+            })
+            console.log(newArr);
+        }
+        anotherMethodRemoveDublicateArray(numsDublicate);
+
+        //Mejority ELement
+        let findMejorityNum = [2,2,1,1,1,2,2];
+
+        console.log(Math.max(...findMejorityNum));
+
+        function countItem(arr){
+            let dic = {}
+
+            arr.forEach((item) => {
+                if(dic[item]){
+                    dic[item] += 1
+                } else {
+                    dic[item] =  1;
+                }
+            })
+
+            console.log(dic) //{2: 4, 1: 3}
+
+            let largeKey = null;
+            let largestCount = 0;
+
+            for(let key in dic){
+                /* largeNum = dic[i];
+                console.log(largeNum >= dic[i]) */
+                console.log(dic[key] > largestCount);
+                if(dic[key] > largestCount){
+                    largestCount = dic[key]
+                    largeKey = key
+                }
+            }
+
+            console.log(largeKey)
+
+        }
+
+        countItem(findMejorityNum);
+
+        //
+        let nums3 = [1,1,1,2,2,3]
+
+        nums3.forEach((item, index) => {
+            
+        })
+
+
+    </script>
+</body>
+</html>

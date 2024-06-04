@@ -3,7 +3,7 @@
   }
   
   body {
-    overflow: hidden;
+    position: relative;
   }
   
   .container {
@@ -13,63 +13,37 @@
     justify-content: center;
     background-color: transparent;
   }
-  
-  .row {
-    background-color: black;
-    color: white;
-    width: 0;
+
+  h3 {
+    position: absolute;
     text-align: center;
-    opacity: 0;
-    transition: width 1s linear, opacity 1s ease;
+    top: 20px;
   }
-  
-  .row.active {
+
+  .flag {
+    position: relative;
     width: 300px;
-    opacity: 1;
+    height: 200px;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
   }
-  
-  .container.germany {
-    background-image: linear-gradient(
-      to bottom,
-      #000000 0%,
-      #000000 33%,
-      #dd0000 33%,
-      #dd0000 66%,
-      #ffce00 66%,
-      #ffce00 100%
-    );
+  .Estonia {
+    background: linear-gradient(#4d8fcc 33%, #000 33%, #000 67%, #fff 0);
   }
-  
-  .container.france {
-    background-image: linear-gradient(
+  .Colombia {
+    background: linear-gradient(#fad116 50%, #22408b 50%, #22408b 75%, #d60b1f 0);
+  }
+  .Armenia {
+    background: linear-gradient(#be0026 33%, #3c5aa3 33%, #3c5aa3 66%, #e2ae58 0);
+  }
+  .Belgium {
+    background: linear-gradient(
       to right,
-      #0055a4 0%,
-      #0055a4 33%,
-      white 33%,
-      white 66%,
-      #ef4135 66%,
-      #ef4135 100%
+      black 33%,
+      #fddb21 33%,
+      #fddb21 67%,
+      #ef303f 0
     );
   }
-  .container.argentina {
-    background-image: linear-gradient(
-      to bottom,
-      #8ad3f4 0%,
-      #8ad3f4 33%,
-      #fff 33%,
-      #fff 66%,
-      #8ad3f4 66%,
-      #8ad3f4 100%
-    );
-  }
-  
-  .container.colombia {
-    background-image: linear-gradient(
-      to bottom,
-      #fad116 0%,
-      #fad116 50%,
-      #22408b 50%,
-      #22408b 75%,
-      #d60b1f 75%
-    );
-  }
+
+

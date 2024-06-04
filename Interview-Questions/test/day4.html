@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //Challenge 6: Convert Array to Object
+        function arrayToObject(arr) {
+            // Your code here
+            let newObj = {};
+            if (Array.isArray(arr)) {
+                arr.forEach((item) => {
+                    newObj[item[0]] = item[1]
+                });
+            }
+            return newObj;
+        }
+
+        // Example usage:
+        console.log(arrayToObject([
+            ['a', 1],
+            ['b', 2],
+            ['c', 3]
+        ]));
+        // Output: { a: 1, b: 2, c: 3 }
+
+
+        ///Challenge 7: Count Occurrences of Each Element
+        function countOccurrences(arr) {
+            // Your code here
+            let newObj = {};
+            arr.forEach(element => {
+                /*  console.log(element) */
+                if (newObj[element]) {
+                    newObj[element] += 1
+                } else {
+                    newObj[element] = 1
+                }
+            });
+            return newObj;
+        }
+
+        // Example usage:
+        console.log(countOccurrences(['a', 'b', 'a', 'c', 'a', 'b']));
+        // Output: { a: 3, b: 2, c: 1 }
+
+        // Challenge 8: Find Unique Elements
+        function uniqueElements(arr1, arr2) {
+            // Your code here
+            //get similar match
+            /*  let result = arr1.filter((item) => {
+                 return arr2.includes(item)
+             });
+             console.log(result, 'result') */
+            let newArr = [];
+            arr1.forEach((item) => {
+                if (!arr2.includes(item)) {
+                    newArr.push(item)
+                }
+            });
+
+            arr2.forEach((item) => {
+                if (!arr1.includes(item)) {
+                    newArr.push(item)
+                }
+            })
+            return newArr;
+        }
+
+        // Example usage:
+        console.log(uniqueElements([1, 2, 3], [2, 3, 4])); //[1, 4]
+
+
+        function getUniqueArr(arr1, arr2) {
+            let combinedArr = [...arr1, ...arr2];
+            /* console.log(combinedArr); */
+            let uniqueArr = [...new Set(combinedArr)];
+            /*  console.log(uniqueArr); */
+            return uniqueArr;
+        }
+        console.log(getUniqueArr([1, 2, 3], [2, 3, 4]));
+        // Output: [1, 2, 3, 4]
+
+
+        //Challenge 9: Sum of Array Elements
+        function sumArrayElements(arr) {
+            // Your code here
+            let result = arr.reduce((accAcc, currentArr) => {
+                return accAcc.concat(Array.isArray(currentArr) ? sumArrayElements(currentArr) : currentArr)
+            }, []);
+
+            let getSum = result.reduce((acc, currentVal) => acc + currentVal, 0);
+
+            return getSum;
+        }
+
+        // Example usage:
+        console.log(sumArrayElements([1, [2, 3],
+            [4, [5, 6]]
+        ]));
+        // Output: 21
+
+
+        //Challenge 10: Get Object Properties by Path
+        function getObjectPropertyByPath(obj, path) {
+            // Split the path into an array of keys
+            const keys = path.split('.');
+            let current = obj;
+
+            // Traverse the object using the keys
+            for (let key of keys) {
+                // Check if the key exists at the current level
+                if (current.hasOwnProperty(key)) {
+                    // Move deeper into the object
+                    current = current[key];
+                } else {
+                    // If the key doesn't exist, return undefined
+                    return undefined;
+                }
+            }
+
+            // Return the final value after traversing all keys
+            return current;
+        }
+
+        // Example usage:
+        const obj = {
+            a: {
+                b: {
+                    c: 3
+                }
+            }
+        };
+        console.log(getObjectPropertyByPath(obj, 'a.b.c')); // Output: 3
+        console.log(getObjectPropertyByPath(obj, 'a.b.d')); // Output: undefined
+    </script>
+</body>
+
+</html>

@@ -16,7 +16,9 @@ function say(name, location) {
     console.log(this.greeting + ' ' + name + ' ' + location);
 }
 
+//Don't do this 
 let callMe = say.call(this, "Harsha", "Mumbai"); //you don't need to save it in variable
+
 //call on the fly
 say.call(this, "Harsha", "Mumbai"); //Hi Harsha Mumbai
 

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1. Two Sum (leet code interview aksed in deloitee)
+        let nums = [2,7,11,15];
+        let target = 9;
+        var twoSum = function (nums, target) {
+            /* let storageObj = new Map();
+
+            for(let index in nums){
+                let pairTarget = target - nums[index];
+                if(storageObj.has(pairTarget)) return [index, storageObj.get(pairTarget)]
+                storageObj.set(nums[index], index)
+            } */
+            for(let i = 0; i < nums.length; i++){
+                for(let j = i ; j < nums.length; j++){
+                   /*  console.log(nums[i], 'i', nums[j], 'j') */
+                   /*  console.log(nums[i] + nums[j], target) */
+                    if(nums[i] + nums[j] === target){
+                        return [i, j]
+                    }
+                }
+            }
+            return null// If no pair is found
+        };
+        console.log(twoSum(nums, target));
+    </script>
+</body>
+</html>

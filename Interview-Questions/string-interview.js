@@ -153,3 +153,48 @@ deQueue(inputStack, outputStack)
 deQueue(inputStack, outputStack)
 console.log(inputStack)
 console.log(outputStack);
+
+///Mutations
+
+//mutation(["Alien", "line"]) should return true.
+//mutation(["floor", "for"]) should return true.
+//mutation(["ate", "date"]) should return false.
+
+function mutation(arr){
+    let firstWord = arr[0].toLowerCase();
+    let secondWord = arr[1].toLowerCase();
+
+    for(let i = 0; i < secondWord.length; i++){
+        if(firstWord.indexOf(secondWord[i]) === -1){
+            return false
+        }
+    }
+
+    return true;
+}
+
+console.log(mutation(["ate", "date"])); //false
+console.log(mutation(["floor", "for"])) //true
+
+//You need to find where in the array a number should be inserted by order, and return the index where it should go.
+function getIndexToIns(arr, num){
+    arr.sort((a, b) => a - b);
+
+    arr.forEach((item, index) => {
+        if(item > num) return index
+    })
+
+    return arr.length;
+}
+/* 
+function getIndexToIns(arr, num) {
+    return arr
+      .concat(num)
+      .sort((a, b) => a - b)
+      .indexOf(num);
+  } */
+  
+
+  getIndexToIns([1, 3, 4], 2);
+
+  getIndexToIns([40, 60], 500);

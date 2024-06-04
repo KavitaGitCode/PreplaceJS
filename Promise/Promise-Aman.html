@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        //Promise concurrency or Static methods
+        let p1 = new Promise((resolve, reject) => {
+
+            setTimeout(() => {
+
+                reject("promise 1 resolve");
+
+            }, 4000);
+
+        });
+
+        // let p1 = Promise.resolve('promise 1 resolve')
+
+
+        let p2 = new Promise((resolve, reject) => {
+
+            setTimeout(() => {
+
+                reject("promise 2 resolve");
+
+            }, 4000);
+
+        });
+
+
+        let p3 = new Promise((resolve, reject) => {
+
+            setTimeout(() => {
+
+                reject("promise 3 reject");
+
+            }, 6000);
+
+        });
+
+        ////these are Promise concurrency or Static methods
+        // promise.all
+
+        // promise.allSettled
+
+        // promise.race
+
+        // promise.any (Aggregate Error)
+
+        Promise.any([p1, p2, p3])
+            .then((res) => {
+                console.log("res", res);
+            })
+            .catch((err) => {
+                console.error("err", err.errors);
+            });
+
+//remember this
+//1. promise.all : 
+   // - if any promise will failed...then will get only those rejected promise not the resolve once and goes to catch..not getting any result  
+   // if all are fullfilled then get resolved and goes to then()   
+   //it will resolve as per the time we provided
+
+//2. promise.allSettled
+    //all promise settled after then (wait until the last fullfilled or reject) we got the result...
+    //even if its reject we get the result in then...it not catch in catch method
+
+//3. promise.race  
+     //which ever promise will resolve or reject, it will retrun the first one, will not check for other promisees
+     //if the first promise is reject and after that next promise is resolve still it will return the reject promise
+     //not the resolve one 
+     // will resturn only one promise not the array 
+     
+//4  promise.any
+     //it always return the resolve promise first ...if the first promise is reject it will ignore it       
+    //it will return only one first resolve promise...not the other promise which resolve after this
+    // it will ignore the reject promise
+    //if all promise were reject then in this case it will give summary inside catch
+    //will get "AggregateError": all promise were rejected...how to show it
+    //catch((error) => error.errors) ///will get the error in array formate
+
+///types of errors in javascript
+/* 1.reference error
+2. syntax
+3. typeError
+4. AggregateError    Async ka part(promise) */
+    </script>
+</body>
+
+</html>
