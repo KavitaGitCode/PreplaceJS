@@ -68,7 +68,7 @@ Car.start.call(airCraft); // Start the aircraft
 Car.speedUp.call(airCraft); // Speed up the aircraft
 airCraft.fly(); //Fly aircraft
 
-/* Technically, the aircraft object borrows the start() and speedUp() method of the car object. And function borrowing refers to an object that uses a method of another object. */
+/* Technically, the aircraft object borrows the start() and speedUp() method of the Car object. And function borrowing refers to an object that uses a method of another object. */
 
 //4th example
 //how the arguments object borrows the filter() method of the Array.prototype via the call() function:

@@ -1,6 +1,14 @@
 //Asked in interview
 //ref Link : https://irmakesin.medium.com/mid-level-javascript-interview-questions-solutions-about-arrays-632297098ab8
 //create your own flat method (Asked in interview)
+
+(function(){
+  console.log(1);
+ setTimeout(() => console.log(2), 3000);
+setTimeout(() => console.log(3), 0)
+console.log(4);
+}())
+
 [1, [2, [3, [4, [5, [[[6]]]]]]]].flat(Infinity);
 
 function flat(arr, level) {
@@ -55,6 +63,18 @@ const arr1 = [1, [2, 3], [4, [5, 6]]];
 const flatArr = arr1.flat(Infinity);
 
 console.log(flatArr, 'flatArr');
+
+let arrNo1= [1,3,5];
+let arrNo2=[2,4,8];
+function  mergerSortArr(arr1, arr2){
+    let mergeArr = [...arr1, ...arr2];
+    
+    let sortArr = mergeArr.sort((a, b) => a - b);
+    
+    console.log(sortArr)
+    return sortArr
+} 
+mergerSortArr(arrNo1, arrNo2) //1,2,3,4,5,8
 
 //How can you find the intersection(comman) of two arrays?
 const arr2 = [1, 2, 3, 4];

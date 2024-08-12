@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Reactagular{
+            //Set up object. runs only once when the object created
+            constructor(_width, _height, _color){
+                console.log('The rectagular is being created');
+                //this...the objected is created by using this class having this property
+                this.width = _width;
+                this.height = _height;
+                this.color = _color
+            }
+
+            //methods
+            getArea(){
+                return this.width * this.height
+            }
+
+            get area(){
+                return this.width * this.width;
+            }
+
+            set area(area){
+                this.width = Math.sqrt(area);
+                this.width = this.width;
+            }
+
+            printDiscription(){
+                console.log(`I am rectagular with  the widht ${this.width} X ${this.height}. I am ${this.color} color.`)
+            }
+        }
+        //created instacne object by refernce of this class
+        let myReactangular1 = new Reactagular(7, 3, 'blue');
+        let myReactangular2 = new Reactagular(10, 5, 'red');
+
+        console.log(myReactangular1.getArea());
+        console.log(myReactangular2.getArea());
+        myReactangular2.printDiscription();
+        myReactangular1.area = 100;
+        console.log(myReactangular1.width);
+    </script>
+</body>
+</html>

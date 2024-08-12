@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Question 1: Find the longest word length
+        const words = ['apple', 'banana', 'cherry', 'dragonfruit', 'elderberry'];
+        function maxWords(arr){
+            let largeWord = arr[0];
+            arr.forEach(element => {
+                if(largeWord.length < element.length){
+                    largeWord = element
+                }
+            });
+            console.log(largeWord, largeWord.length);
+            return largeWord.length;
+        }  
+        maxWords(words);
+
+        //Question 2: Find the longest word
+        function logestWord(array){
+          let largeWord =  array.reduce((acc, currentItem) => {
+              return  acc.length > currentItem.length ? acc : currentItem 
+            }, "");
+            return largeWord;
+        }
+        console.log(logestWord(words))
+
+        //Question 3: Calculate the factorial of the largest number in the array
+        const numbers = [5, 2, 8, 4, 3];
+        let largeNum = Math.max(...numbers); //8
+        
+        function calculateFactorial(num){
+            if(num === 1) {
+                return 1
+            } else {
+                return num * calculateFactorial(num - 1)
+            }
+        }
+        console.log(calculateFactorial(largeNum)); //40320
+
+        //Question 4: Calculate the average score of students who scored above 90
+        const students = [
+            { name: 'John', score: 85 },
+            { name: 'Sarah', score: 92 },
+            { name: 'Michael', score: 88 },
+            { name: 'Emma', score: 95 },
+            { name: 'Daniel', score: 90 },
+        ];
+
+        function calculateAvg(){
+            let filterScore = students.filter((item) => item.score > 90);
+            let sumNum = filterScore.reduce((acc, currentItem) =>  currentItem.score + acc, 0);
+            let result = sumNum / filterScore.length
+            console.log(result)
+            return result;
+        }
+        calculateAvg();
+
+        const above90StudentsAverage = students.filter((student) => student.score > 90).reduce((acc, currentItme, index, arr) => {
+            return acc + currentItme.score / arr.length
+        }, 0);
+        console.log(above90StudentsAverage)
+        
+        //Question 5: Filter out books published before the year 2000 and return their titles
+        const books = [
+            { title: 'Book 1', year: 1998 },
+            { title: 'Book 2', year: 2003 },
+            { title: 'Book 3', year: 1995 },
+            { title: 'Book 4', year: 2001 },
+        ];
+        let publishBefore2000 = books.filter((item) => item.year < 2000).map((item) => item.title);
+        console.log(publishBefore2000, 'books published before the year 2000')
+
+        //Que stion 6: Capitalize the first letter of each word in the array
+        const strings = ['hello world', 'i am openai', 'welcome to javascript'];
+        function capitalizeFirstWord(arr){
+           return arr.map((item) => {
+                let splitWord = item.split(' ');
+                return splitWord.map((item) => {
+                   return item.charAt(0).toUpperCase() + item.slice(1).toLowerCase();
+                }).join(' ');
+            })
+        }
+        console.log(capitalizeFirstWord(strings));
+
+        //Question 7: How can you check if two arrays are equal?
+        function isArrayEqual(arr1, arr2){
+            if(arr1.length !== arr2.length){
+                return false
+            }
+
+            for (let index = 0; index < arr1.length; index++) {
+                if(arr1[index] !== arr2[index]){
+                    return false;
+                }
+            }
+
+            return true
+        }
+        console.log(isArrayEqual([1, 2, 3, 3], [1, 2, 3, 7]));
+
+        //Move Zeros
+        let  nums = [0];
+        let nums2 = [0,1,0,3,12]
+        console.log(nums.length)
+        function moveZero(arr){
+            let arrLength = arr.length || 1;
+            arr.forEach((item, index) => {
+               if(item === 0 && arr.length !== 1){
+                arr.splice(index, 1)
+               } 
+            }) 
+           /*  const res = Array.from({length: arrLength}, (_, index) => arr[index] ?? 0);
+            console.log(res) 
+            return res;
+            console.log(arr.concat(new Array(arrLength).fill(0)).slice(0, arrLength));*/
+            return arr.concat(Array(arrLength).fill(0)).slice(0, arrLength)
+        }
+        console.log(moveZero(nums));
+        console.log(moveZero(nums2));
+    </script>
+</body>
+</html>

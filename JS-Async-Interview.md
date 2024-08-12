@@ -1,3 +1,7 @@
+Ref Link: 'https://www.hellojavascript.info/docs/general-javascript-questions/promises-async-await/callbacks#google_vignette'
+
+Ref Link : https://testbook.com/interview/javascript-promise-interview-questions
+
 # Synchronous JavaScript (asked in interview)
 
 Synchronous means to be in a sequence, i.e. every statement of the code gets executed one by one. So, basically a statement has to wait for the earlier statement to get executed.
@@ -30,7 +34,8 @@ Asynchronous is a non-blocking architecture, so the execution of one task isn't 
 
 it does not block the rest of the code from executing and after all the code its execution, it gets pushed to the call stack and then finally gets executed. This is what happens in asynchronous JavaScript.
 
-eg. setTimeout()...addEventListenet("click" , function);
+Examples: 
+setTimeout()...addEventListenet("click" , function);
 Data Fetching | retrieves data from a remote server,
 Calling Backend API's
 Loading Files
@@ -65,7 +70,7 @@ console.log("data is fetching from server");
 
 To understand the asynchronous behavior of JavaScript while using the setTimeout function we need to get familiar with the event loop.
 
-Our web browser consists of a JavaScript engine, web APIs, local storage, timers, etc. JavaScript engine contains a single call stack in which all the code is executed immediately as and when it is pushed without waiting.
+Our web browser consists of a JavaScript engine, web APIs, local storage, timers, fetch api etc. JavaScript engine contains a single call stack in which all the code is executed immediately as and when it is pushed without waiting.
 
 Now, we need to understand that the setTimeout function is not a part of JavaScript but it is a part of the web browser as it is essentially a web API and the browser allows the JavaScript engine to access the setTimeout function with the help of the global window object.
 
@@ -413,8 +418,13 @@ Promise.any([p1, p2, p3])
   });
 ```
 
+# How to make multiple API requests in parallel?
+# have three api one of them will reject how will i get the other api response in javascript
+read : https://rapidapi.com/guides/parallel-api-requests
+
 # diff between localstorage, sessionstorage and cookies
 
+Both localStorage and sessionStorage are web storage objects in JavaScript, but they have different scopes and lifetimes.
 The Web Storage API provides mechanisms by which browsers can securely store key/value pairs.
 
 - The localStorage read-only property of the window interface
@@ -425,7 +435,11 @@ The Web Storage API provides mechanisms by which browsers can securely store key
 
 ## Difference between localStorage and sessionStorage
 
-localStorage is similar to sessionStorage, except that while localStorage data has no expiration time, sessionStorage data gets cleared when the page session ends — that is, when the page is closed. (localStorage data for a document loaded in a "private browsing" or "incognito" session is cleared when the last "private" tab is closed.)
+localStorage persists data even after the browser window is closed and is accessible across different browser tabs/windows of the same origin.
+
+sessionStorage stores data for a single browser session and is accessible only within the same tab or window.
+
+(localStorage data for a document loaded in a "private browsing" or "incognito" session is cleared when the last "private" tab is closed.)
 
 ```javascript
 localStorage.setItem("myCat", "Tom"); //add items in storage
@@ -435,3 +449,37 @@ localStorage.clear();
 ```
 
 Before HTML5, application data had to be stored in cookies, included in every server request. Web storage is more secure, and large amounts of data can be stored locally, without affecting website performance.
+
+# What is a web worker or service worker in javascript?
+
+Web Workers and Service Workers are two different concepts in JavaScript,
+
+Web Workers are designed for concurrent JavaScript execution in the background, while Service Workers are used for creating Progressive Web Apps with offline capabilities and advanced features. Both are essential tools for enhancing the performance and functionality of web applications.
+
+Each serves a distinct purpose in web development:
+
+## Web Workers:
+
+1. Concurrency: Web Workers are a browser feature that allows you to run JavaScript code in the background, separate from the main browser thread. This enables concurrent execution of tasks without blocking the user interface.
+
+2. Use Cases: Web Workers are commonly used for tasks that are computationally intensive or time-consuming, such as data processing, image manipulation, or complex calculations. By running these tasks in a separate thread, they don’t impact the responsiveness of the web page.
+
+3. Communication: Web Workers can communicate with the main thread using a messaging system. They can send and receive messages, allowing for coordination between the main thread and the worker.
+Browser Support: Web Workers are supported in most modern browsers.
+
+# Service Workers:
+
+1. Offline Capabilities: Service Workers are a more advanced feature used for creating Progressive Web Apps (PWAs). They act as proxy servers that run in the background and can intercept and cache network requests. This enables offline capabilities, such as serving cached content when the user is offline.
+
+2. Use Cases: Service Workers are primarily used for implementing features like offline access, push notifications, and background sync. They enable web apps to function even when there’s no internet connection.
+
+3. Lifecycle: Service Workers have their own lifecycle with events like install, activate, and fetch. They are typically registered at the beginning of a web app's life.
+Browser Support: Service Workers are supported in modern browsers and are a key technology for creating reliable and engaging web applications.
+
+# Difference between post and patch and PUT method 
+
+# what is preflight request?
+
+# What is cookies? Give an example
+
+# web socket

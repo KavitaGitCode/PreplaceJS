@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //example 1
+        function bubbleSortFun1(arr){
+            let swaped;
+            /* do{
+                swaped = false;
+              for(let i = 0; i < arr.length - 1; i++){
+                //console.log(arr[i], 'current val', arr[i + 1], 'current value next value');
+                if(arr[i] > arr[i + 1]){
+                   //swapped
+                    [arr[i], arr[i + 1]] = [arr[i+1], arr[i]];
+                    swaped = true
+                }
+              }
+            } while(swaped) */
+
+            /* for(let i = arr.length; i > 0; i--){
+                for(let j = 0; j < i - 1; j++){
+                    //console.log(arr[j], arr[j + 1])
+                    console.log(arr[i], j)
+                    if(arr[j] > arr[j+1]){
+                        [arr[j], arr[j+1]] = [arr[j+1], arr[j]]
+                    }
+                }
+            } */
+
+            for(let i = 0; i < arr.length; i++){
+                swaped = false; //to stop the uncecessary loop
+                for(let j = 0; j < arr.length - 1; j++){
+                    if(arr[j] > arr[j+1]){
+                        [arr[j], arr[j+1]] = [arr[j+1], arr[j]]
+                        swaped = true
+                    }
+                }
+                if(!swaped){
+                    break
+                }
+            }
+             console.log(arr);
+             return arr;
+        }
+        let arr1 = [8, 20, -2, 4, -6];
+        let arr2 = [8, -6, -2, 4, 20];
+        bubbleSortFun1(arr1)
+    </script>
+</body>
+</html>

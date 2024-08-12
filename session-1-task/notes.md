@@ -17,7 +17,7 @@ It includes 5 steps
 1. DOM TREE CREATION: The browser reads the raw HTML and converts it into a tree structure known as the DOM.
 2. CSSOM TREE CREATION: The browser reads the CSS, whether it’s inline, in the head(internal with style tage), or an external stylesheet, and constructs the CSSOM
 3. Create Render TREE: The Render Tree is a combination of the DOM and CSSOM. It includes all visible element (so not with display: none) and the styles applied to it.
-4. Layout: The layout step determines where and how the elements are positioned on the page, determining the width and height of each element, and where they are in relation to each other. How much space is required for the element. Its actually calculating space width, height, of only visible elements.
+4. Layout: The layout step determines where and ho  w the elements are positioned on the page, determining the width and height of each element, and where they are in relation to each other. How much space is required for the element. Its actually calculating space width, height, of only visible elements.
 5. Paint: show all the nodes with calculated form of layout and the browser paints the pixels on the screen.
 
 Points to remember

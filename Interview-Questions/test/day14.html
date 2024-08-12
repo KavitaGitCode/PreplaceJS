@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj = {
+    name: "Kavita",
+    lastName: "Ghatge",
+    age: 34
+}
+
+for(let i in obj) {
+    console.log(i, ':', obj[i])
+}
+
+let nums = {
+    a: 100,
+    b: 200,
+    c: "I am string"
+}
+
+function multipleByTwo(obj){
+    for(let i in obj){
+        if(typeof obj[i] === "number"){
+            obj[i] *= 2
+        }
+    }
+}
+multipleByTwo(nums)
+console.log(nums)
+
+const shape ={
+    radius: 10,
+    diameter(){
+        console.log(this.radius, 'i m from normal function')
+        return this.radius * 2
+    },
+    perimeter : () => {
+        console.log(this.radius,  'i m from arrow function')
+       return 2 * Math.PI * this.radius
+    }
+}
+
+console.log(shape.diameter());
+console.log(shape.perimeter());
+
+let user = {
+    name: "Piyush",
+    age: 23,
+    fullName: {
+        firstName: "Piyus",
+        lastName: "Agrawal"
+    }
+}
+
+const name = "road side raod";
+
+const {name: desName, fullName: {lastName}} = user;
+
+console.log(desName, lastName)
+
+console.log({a: 1} == {a: 1})
+console.log({a: 1} === {a: 1})
+
+let person = {name: 'Linda'};
+const member = [person];
+person = null;
+//person.name = null
+console.log(member)
+    </script>
+</body>
+</html>

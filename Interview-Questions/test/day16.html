@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        
+
+        function fibonachi(n) {
+            if(n <= 1) return n
+            
+            let next = 1, prev = 0, result;
+
+            for(let i = 2; i <= n; i++){
+                result = prev + next;
+                prev = next;
+                next = result;
+            }
+
+            return next;
+
+        }
+
+        console.log(fibonachi(6), 'test')
+    </script>
+</body>
+
+</html>

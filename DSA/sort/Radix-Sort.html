@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        bucketArr.push(num) aap directly number ko push krwa rahe ho, instead aapko based on number values from last push krwana h 
+    </p>
+    <script>
+        const arr = [3, 34, 2, 5, 89, 1000, 324, 951, 23456, 8, 5, -5, 99, 1];
+
+function radixSort(arr) {
+    // Find the maximum number to know the number of digits
+    const getLargeArr = Math.max(...arr);
+    const getLength = getLargeArr.toString().length;
+    
+    // Initialize the bucket array
+    let bucketArr = Array.from({length:10}).fill().map(() => []);
+    console.log(bucketArr)
+
+    // Perform the sorting for each digit place (units, tens, hundreds, etc.)
+    for (let i = 0; i < getLength; i++) {
+        // Place each number in the corresponding bucket
+        arr.forEach(num => {
+            let digit = Math.floor(Math.abs(num) / Math.pow(10, i)) % 10;
+            console.log(digit, 'digit')
+            bucketArr[digit].push(num);
+        });
+        
+        // Collect numbers from the buckets and put them back into the array
+        arr = [];
+        bucketArr.forEach(bucket => {
+            while (bucket.length) {
+                //Remove elements from the bucket and add them to the main array (arr):
+                arr.push(bucket.shift());
+            }
+        });
+
+        // Reinitialize the bucket array for the next digit place
+        bucketArr = Array.from({length: 10}, () => []);
+    }
+
+    return arr;
+}
+
+console.log(radixSort(arr));
+
+
+
+    </script>
+</body>
+</html>

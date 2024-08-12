@@ -33,5 +33,8 @@ https://egghead.io/courses/rtk-query-basics-query-endpoints-data-flow-and-typesc
 # Testing in React (with react testing library and jest)
 https://www.youtube.com/watch?v=xntMzZ5S1N0&list=PL8p2I9GklV47ZpFC9sNHTXwJRgwwzdkNG
 
+# React Project Complete Series
+https://www.youtube.com/watch?v=R500Rdfsg00&list=PLnZgHKyxHOECKS3EcBTx8BoJ0SBBfWT4I
+
 
 

@@ -19,6 +19,27 @@ In a given part of code or program, scope helps us to detemine, what variables a
     2. Function Scope: Function scope has local variable so we can't use it  that local var outside of that function scope. THis local variable will be deleted after the completion of function.
     3. Global Scope: If we created any variable on global scope we can access it from any place of that script file or any function scope or any block scope. It’s actually created on global level so u can access it with window key word. But variable created with 'let' you can't access it on window level but variable created with 'var' keyword you can access it.
 
+ ```javascript
+ var myObj = {
+    foo: 'bar',
+    fun: function () {
+        var self = this;
+        console.log(this.foo); //bar
+        console.log(self.foo); //bar
+        (function(){
+             console.log('inner', this.foo); //inner undefined
+             console.log('inner', self.foo); //inner bar
+        }())
+    }
+}
+myObj.fun()
+//result
+bar
+VM706:6 bar
+VM706:8 inner undefined
+VM706:9 inner bar
+ ```   
+
 # What is Lexical Scope
 
     Lexcial means where the variable is inheritantly sitting inside source of code.
@@ -31,8 +52,8 @@ In a given part of code or program, scope helps us to detemine, what variables a
 
    short:
    when? IF...FEC...and put in call stack..when FEC create at that time Lexcical ENV create
-   contains: LM + IPLE
-   Store: All 1)VAR & 2)FRR of PLS
+   contains: LM + It's PLE
+   Store: All 1)VAR & FRR of PLS
 
 # what is Scope CHain
 
@@ -59,7 +80,7 @@ If js engine doesn't find anything in local memory of function then it will look
     - The closure is created when a child functions to keep the environment of the parent’s scope even after the parent’s function has already executed.
 
     Short:
-    1. What: F Along with LX:ENV bundle...simple term ...we can access OFS from IFS..
+    1. What: F Along with LX:ENV bundle togeather forms a closure...simple term ...we can access OFS from IFS..
     2. IFS preserve OFS even if the parent func is already EXECUTED (IMP)
     3. HoW: closure store (Ref to the var) present inside the LSC *****IMP
 
@@ -78,8 +99,8 @@ console.log(hi); // returns the function definition
 hi(); // calling the function
 ```
 
-**Advantage**: data encapsuliation and data privacy...They allow you to attach variables to an execution context...variable is state that you can use later.
-**Disadvantage**: vairblae declare inside the closure are not grabage collected. so  its affect script performance both in terms of processing speed and memory consumption will slow down your application.
+**Advantage**: data encapsuliation and data privacy...They allow you to attach variables to an execution context...maintain variable state that you can use later.Useful for currying and callback func. 
+**Disadvantage**: variable declare inside the closure are not grabage collected. so  its affect script performance both in terms of processing speed and memory consumption will slow down your application.
 Short cut : MC and PS: slow down you applicaton perfomance
 
 # setTimeout with Closure
@@ -108,16 +129,29 @@ for(var i = 0; i < 5; i++){
 }
 
 //each iteration creates its own closure, capturing the value of i at that moment in time, and the correct value of i will be logged after the respective delay.
+
+//another example
+function func1(){
+    setTimeout(() => {
+        console.log(x); 
+        console.log(y)
+    }, 2000)
+    var x =2;
+  
+  let y = 10
+}
+
+func1() //answer ...2,10
 ```
 
-# What is Curring?
+# What is currying?
 
   Its a technique of evaluating function with single / multiple arguments into sequence of functions with single /multiple arguments.
- If there is no arguments there will be no curring.
+ If there is no arguments there will be no currying.
 
-Curring functions are constructed by chiaining closure and immediately returning their inner functions simultaneously.
+currying functions are constructed by chiaining closure and immediately returning their inner functions simultaneously.
 
-### advantage of curring?
+### advantage of currying?
 
     1. it helps to avoid passing same variables multiple times
     2. Create higehr order function
@@ -187,11 +221,7 @@ Note: A function which take another function as an argument or returns a functio
 
 # What is Hoisting?
 
- Hoisting is a Javascript default beheviour, where all the variables and functions delcaration are moved to the top of their containing scope during compilation phase. Even if you declare variables and functions later in your code, JavaScript acts as if you wrote them all at the very beginning of their scope.
-
- OR
-
- When any interpreter runs the code then all the variables are re-hoisted to the top of the original scope. This method is applicable for declaration not for the initialization of a variable. This is known as a javascript Hoisting.
+ Hoisting is a Javascript default beheviour, where all the variables and functions delcaration are moved to the top of their containing scope during compilation phase before the actual code execution. Even if you declare variables and functions later in your code, JavaScript acts as if you wrote them all at the very beginning of their scope.
   
  it's important to note that only the declarations are hoisted, not the initializations or assignments.
  So suppose if you want to try to aceess variable before declareing it
@@ -483,6 +513,12 @@ oneplus.founder("Carl Pei"); // 'Carl Pei is founded in china'
 nothing.language; // 'English'
 ```
 
+# What is the difference between prototype and instance properties in JavaScript?
+
+A prototype property is a property that is defined on the prototype object of a constructor function.Prototype properties are shared by all objects that are created by a constructor function. 
+
+ Instance properties are properties that are defined on individual objects that are created by a constructor function. Instance properties are not shared by other objects.
+
 # Classes
 
 1. ES6 provides a new syntax to create objects, using the class keyword.
@@ -527,6 +563,8 @@ When we use "use strict"; at the begining of code, Strict mode applies certain r
 
 please read PreplaceJS\this.md and PreplaceJS\this-aman.js
 
+https://medium.com/@amsingh714/common-javascript-interview-question-what-is-the-purpose-of-this-e9f5e11720c5
+
 # What do you mean by NULL in JavaScript?
 
  The NULL value represents that no value or no object. It is known as empty value/object.
@@ -567,7 +605,9 @@ Bubbling and Capturing are the two phases of propagation. In their simplest defi
 # Event Delegation (asked in Tech Mahindra)
 Event Delegation is a pattern based upon the concept of Event Bubbling. 
 
-Event delegation is a technique where you attach a single event listener to a parent element, and that event listener handles events occurring on its child elements. It helps optimize performance and reduce memory consumption.
+Event delegation is a technique where you attach a single event listener to a parent element, and that event listener handles events occurring on its child elements.  It’s useful for dynamically created elements or when you have a large number of elements. It helps optimize performance and reduce memory consumption.
+
+Instead of attaching an event listener to each individual element, event delegation involves attaching a single event listener to a common ancestor element that is higher up in the DOM (Document Object Model) hierarchy.
 
 eg
 ```javascript 
@@ -598,6 +638,10 @@ Event delegation is possible because of event propagation in the DOM, where the 
 
 # Can you explain the concept of destructuring in JavaScript?
 
+Destructuring is used to create varibles from array items or object properties.
+Spread syntax is used to unpack iterables such as arrays, objects, and function calls.
+Rest parameter syntax will create an array from an indefinite number of values.
+
 Destructuring in JavaScript is a feature introduced in ES6 that allows you to unpack values from arrays, or properties from objects, into distinct variables. This can greatly simplify your code, making it more readable and maintainable.
 
 ```javascript
@@ -605,13 +649,13 @@ let a = arr[0];
 let b = arr[1];
 let c = arr[2];
 
-//With destructuring
+//With destructuring ARRAY
 let [a, b, c] = arr;
 
 let name = obj.name;
 let age = obj.age;
 
-//With destructuring
+//With destructuring Object
 let {name, age} = obj;
 ```
 
@@ -663,7 +707,7 @@ num(1,2,3)
 
 ```
 
-# Can we handle arguments throught arrow function
+# Can we handle arguments throught arrow function : NOOOOOOOOOOOOOOOOOOOOOO
 
 ```javascript
 let argArrow = () => {
@@ -712,9 +756,7 @@ const mergedObject = { ...obj1, ...obj2 };
 // mergedObject is { a: 1, b: 3, c: 4 }
 ```
 
-
-
-# ES6 features  (asked in interview 3 times)
+# What are the new features in ES6  (asked in interview 3 times)
 
 1. let and const Keywords
 2. Arrow Functions
@@ -850,4 +892,90 @@ Website : PageSpeed Insights, LlightHOuse, developer tools
 # How to deploy react app to production
 
 # Did you make any changes in webpack? Where and why?
+
+
+# What is Arrow function?
+Arrow function {()=>} is concise way of writing JavaScript functions in shorter way. Arrow functions were introduced in the ES6 version. They make our code more structured and readable.
+
+Arrow functions are anonymous functions i.e. functions without a name but they are often assigned to any variable. 
+
+1. Regular Functions (regular function in two ways, i.e. Function declaration, and Function expression.)
+2. Arrow Functions (Introduced in ES6) : a more concise syntax for writing function expressions... particularly useful for creating anonymous functions
+
+1. No prototype object for the Arrow function
+2. Cannot be invoked with a new keyword (Not a constructor function)
+3. No own this (call, apply & bind won’t work as expected)
+
+# what is the difference between Map() and filter()
+'Map' is used to apply a function on every item in an array and returns the new array. 'Filter' is used to create a new array from an existing one, containing only those items that satisfy a condition specified in a function.
+
+# Explain Debounce and explain steps and give example
+
+1. debouncing is commonly used to enhance browser performance.
+understand this
+Sometimes, certain actions on a web page involve complex computations that take up time. If these actions are triggered too frequently, it can significantly impact the browser’s performance, especially since JavaScript operates on a single thread.
+
+for code refernce path : PreplaceJS\debounce.html
+
+# What is memoization in JavaScript?
+Memoization is a technique that can be used to improve the performance of JavaScript code.
+Memoization works by storing the results of expensive calculations in a cache.
+This allows the JavaScript code to avoid re-performing the expensive calculations if the same input is provided again.
+
+example:
+
+
+# What is recursion in JavaScript?
+Recursion is a programming technique that allows a function to call itself. Recursion can be used to solve a variety of problems, such as finding the factorial of a number or calculating the Fibonacci sequence.
+
+```javascript
+function factorial(n){
+  if(n === 0){
+    return 1
+  } else {
+    return n * factorial(n-1)
+  }
+}
+
+factorial(5) //5*4*3*2*1 : 125
+```
+
+# How do you handle errors in JavaScript?
+
+Errors in JavaScript can be handled using try-catch blocks. The try block contains the code that may throw an error, and the catch block handles the error and provides an alternative execution path.
+
+```javascript
+try{
+  //this code throw an error
+  throw new Error("Something went Wrong")
+} catch(error){
+  console.log("Error Occured : " + error.message)
+}
+```
+
+# What is generator function?
+
+A generator function is a special type of function that can be paused and resumed during its execution. It allows generating a sequence of values over time, using the yield keyword.
+
+```javascript
+function* numberGenerator() {
+  let i = 0;
+  while (true) {
+    yield i++; //यील्‍ड्‌
+  }
+}
+
+const gen = numberGenerator();
+console.log(gen.next().value); // Output: 0
+console.log(gen.next().value); // Output: 1
+console.log(gen.next().value); // Output: 2
+```
+
+# Optimization: Debouncing and Throttling give an example (pending)
+
+
+(IMP Links)
+//ref link : https://builtin.com/software-engineering-perspectives/javascript-interview-questions
+# https://javascriptcentric.medium.com/top-30-javascript-interview-questions-and-answers-for-2024-7f1e2d1d0638
+
 

@@ -15,8 +15,7 @@ anylise your problem
         - start your own code
         - revisite the problem you aleady solve (at least 5 times)
         - repeatation is the key of learning (IMP);
-    - 
-
+        
     Understand the concept
     always(daily) start to resolve problem : 5 easy 3 mediaum 1 HARD  
     CONSISTANCY...PRACTICE....CONSISTANCY...PRACTICE...CONSISTANCY...PRACTICE

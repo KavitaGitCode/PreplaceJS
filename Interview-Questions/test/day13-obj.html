@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let library = [
+        {
+          author: "Bill Gates",
+          title: "The Road Ahead",
+          readingStatus: true,
+        },
+        {
+          author: "Steve Jobs",
+          title: "Walter Isaacson",
+          readingStatus: true,
+        },
+        {
+          author: "Suzanne Collins",
+          title: "Mockingjay: The Final Book of The Hunger Games",
+          readingStatus: false,
+        },
+        {
+          author: "Kavita",
+          title: "Ayushvar bolu kahi",
+          readingStatus: true,
+        },
+        {
+          author: "Domnic",
+          title: "Hunger Games",
+          readingStatus: true,
+        },
+        {
+          author: "Domnic",
+          title: "Jindgi Toofan Hai",
+          readingStatus: false,
+        },
+      ];
+
+      //you have pick the author and make reading status true if its false
+      function updatedLibraryByAuthor(author) {
+        let result = library.map((book) =>
+          book.author === author ? { ...book, readingStatus: true } : book
+        );
+        return result;
+      }
+      console.log(updatedLibraryByAuthor("Domnic"));
+
+      //change the title of specific book
+      function updateBookName(oldbookName, newBookName) {
+        let result = library.map((book) =>
+          book.title === oldbookName ? { ...book, title: newBookName } : book
+        );
+        return result;
+      }
+      console.log(updateBookName("Walter Isaacson", "Om shanti Om"));
+
+      //Problem: Add a new property 'yearPublished' to a specific book.
+      function addNewPropToBook(bookName, year) {
+        let result = library.map((book) =>
+          book.title === bookName ? { ...book, yearPublished: year } : book
+        );
+        return result;
+      }
+      console.log(addNewPropToBook("Ayushvar bolu kahi", 1987));
+
+      //Problem: Remove the 'readingStatus' property from all books.
+
+      function removeOneProperty(propertyName) {
+        let result = library.map((book) => {
+          const { readingStatus, ...restProps } = book;
+          return restProps;
+        });
+        return result;
+      }
+      console.log(removeOneProperty("readingStatus"));
+
+      // Add multiple new books to the library.
+      const newBooks = [
+        { author: "J.R.R. Tolkien", title: "The Hobbit", readingStatus: true },
+        { author: "George Orwell", title: "1984", readingStatus: false },
+      ];
+
+      const updateBookList = [...library, ...newBooks];
+      console.log(updateBookList);
+
+      //Problem: Add a book at a specific position in the library array.
+      const newBookAtPosition = {
+        author: "Harper Lee",
+        title: "To Kill a Mockingbird",
+        readingStatus: true,
+      };
+
+      function libraryWithInsertedBook(newObj,  positionIndex) {
+        let result = [
+        ...library.slice(0, positionIndex),  // Part 1: elements from start to positionIndex - 1
+        newObj,                             // Part 2: the new book to be inserted
+        ...library.slice(positionIndex)     // Part 3: elements from positionIndex to end
+        ];
+        console.log(result);
+        return result;
+      }
+      console.log(libraryWithInsertedBook(newBookAtPosition, 3));
+
+      //3. Combination of Updating and Addition
+      const bookTitle = "The Catcher in the Rye";
+      const newBookDetails = {
+        author: "J.D. Salinger",
+        title: bookTitle,
+        readingStatus: true,
+      };
+
+      function updatedOrAddedLibrary(bookTitle, newBookObj) {
+        let result = library.some((book) => book.title === bookTitle)
+          ? library.map((book) =>
+              book.title === bookTitle ? { ...book, readingStatus: true } : book
+            )
+          : [...library, newBookDetails];
+        console.log(result);
+        return result;
+      }
+      updatedOrAddedLibrary("The Catcher in the Rye", newBookDetails);
+    </script>
+  </body>
+</html>
