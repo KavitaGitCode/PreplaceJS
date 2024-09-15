@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //anagram programe 1
+        function anagram1(str1, str2){
+            if(str1.length !== str2.length){
+                return false
+            }
+
+            let word1 = str1.replace(/\s/g, '').toLowerCase();
+            let word2 = str2.replace(/\s/g, '').toLowerCase();
+
+            return word1.split('').sort().join('') === word2.split('').sort().join('');
+        } 
+        console.log(anagram1('hello', 'Holep'));  
+
+         function anagram(str1, str2){
+            if(str1.length !== str2.length){
+                return false
+            }
+
+           let obj = {};
+           for(let word of str1){
+            //console.log(word);
+            if(obj[word]){
+                obj[word] += 1;
+            } else {
+                obj[word] = 1
+            }
+           }
+           //console.log(obj)
+           for(let item of str2){
+            if(!obj[item]) return false
+
+            obj[item] -= 1;
+            console.log(obj[item]);
+          }
+
+          return true
+        } 
+        console.log(anagram('hello', 'holel'))
+        //console.log(anagram('hello', 'Holell'));
+
+        const words = ["dell", "ledl", "abc", "cba", 'boo'];
+        //{abc:[abc,cba], dell:[dell, ledl]}
+
+        function anagramTest(str){
+            if(!str) return;
+
+            return str.split('').sort().join('');
+        }
+
+        console.log(anagramTest('abjcke'));
+
+        function anagram2(...arr){
+            let obj = {};
+            for(let item of words){
+               const sortedWord =anagramTest(item);
+               if(obj[sortedWord]){
+                 obj[anagramTest(item)].push(item)
+               } else {
+                obj[anagramTest(item)] = [item]
+               }
+            }
+            console.log(obj);
+            return obj;
+        }
+        anagram2(words)
+    </script>
+</body>
+</html>

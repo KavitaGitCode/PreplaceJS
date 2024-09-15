@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function quickSort(arr){
+            //edge case
+            if(arr.length <= 1){
+                return arr
+            }
+
+            let pivot = arr[0];
+            let leftArr = []; //low
+            let rightArr = []; //high
+
+            //for loop O of n
+            for(let i = 1; i < arr.length; i++){
+                if(arr[i] < pivot){
+                    leftArr.push(arr[i])
+                }  else {
+                    rightArr.push(arr[i])
+                }
+            }
+
+            //call function recursively devide the array into smaller array which is log n
+            return [...quickSort(leftArr), pivot, ...quickSort(rightArr)]
+        }
+
+        let arr = [3,5,2,13,12,-1,3,2,13,45];
+        console.log(quickSort(arr))
+
+        //worst case complex O(n^2) (O of n squre) //this is happend when array is already sorted
+        //instead of partitioning array into smaller array we end up partitioning into an empty array & full array
+        //you end up comparing with every other element and that would be quadratic time complexity
+
+        //average complexity : O(n log n) combine recursive and loop 
+    </script>
+</body>
+</html>

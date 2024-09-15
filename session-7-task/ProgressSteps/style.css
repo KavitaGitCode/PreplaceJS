@@ -1,0 +1,67 @@
+*{box-sizing:border-box}
+body{
+    height:100vh;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border:1px solid red;
+    height:100%;
+    flex-direction: column;
+}
+
+.progress-tracker{
+    display:flex;
+    flex-wrap:wrap;
+    margin-bottom:1rem;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.track-task{
+    width: 3rem;
+    height:3rem;
+    border-radius: 3rem;
+    background-color: #f3f1f2;
+    color: black;
+    text-align:center;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding:1rem;
+    margin:2rem;
+    box-shadow: none;
+}
+
+.track-line{
+    height:4px;
+    position:absolute;
+    background-color: #f3f1f2;
+    width: 66%;
+    z-index:-9;
+}
+
+button {
+    background: #d3d3d3;
+    padding:1rem 2rem;
+    margin:0 1rem;
+    border:0;
+    cursor: pointer;
+}
+
+.update{
+    background-color: #2196f3;
+    color: white;
+    transition: background-color 1s ease-in-out;
+}
+
+.update-line-track{
+    width: 0%;
+    background-color: #2196f3;
+    height:4px;
+    position:absolute;
+    z-index:-9;
+    transition: width .5s ease-in-out;
+}

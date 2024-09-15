@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Todo App</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center pb-3 mb-3 border-bottom border-2  border-success">TODO APP</h1>
+      <form id="todoForm">
+        <div class="row">
+            <div class="col">
+                <label for="todoInput" class="form-label">Add your todo</label>
+                <div class="d-flex">
+                    <input type="text" id="todoInput" class="task-text form-control me-2"  aria-label="Enter your task" required>
+                    <button type="submit" class="btn btn-success w-25">Add</button>
+                </div>
+            </div>
+          </div>
+      
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="priorityChecked" checked>
+            <label class="form-check-label" for="priorityChecked">
+                Do you want to set Priority
+            </label>
+          </div>
+      </form>
+      <hr />
+      <section class="todo-list-section">
+        <div class="d-flex flex-row justify-content-end">
+            <section class="filter-todo me-2">
+                <label class="fs-6" for="filterToDo">Filter Todo</label>
+                <select class="form-select" id="filterToDo">
+                    <option value="select-by-date">Date Wise</option>
+                    <option value="select-by-priority">Priority Wise</option>
+                    <option value="select-by-completed">Completed</option>
+                    <option value="select-by-not-completed">Not Completed</option>
+                    <option value="select-by-A-Z">Alphabet Wise</option>
+                </select>
+            </section>
+            <div class="search-input">
+                <label for="search-text" class="fs-6">Search Todo</label>
+                <input id="search-text" type="text" class="search-todo form-control"/>
+            </div>
+        </div>
+        <article class="todo-list my-4">
+           <!--  <div class="d-flex flex-row align-items-center text-bg-light p-3 border-bottom border-2 border-success task-details">
+                <p class="m-0 flex-grow-1"><input type="checkbox" id="completed" class="completedMark me-2"/>to do text <span class="priority-star me-2">*</span></p>
+                <button class="edit btn btn-warning ms-2 me-2">Edit</button>
+                <button class="delete btn btn-danger">Delete</button>
+            </div> -->
+           
+        </article>
+      </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

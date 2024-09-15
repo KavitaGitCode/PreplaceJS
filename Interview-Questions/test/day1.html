@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Count the Occurrences of a Character in a String
+        function countOccurrences(stringTxt, aplha){
+            /* let arr = stringTxt.split('');
+            let newArr = [];
+            arr.forEach((item) => {
+                if(item === aplha){
+                    newArr.push(item)
+                }
+            });
+            console.log(newArr)
+            return newArr.length; */
+
+           console.log(stringTxt.split(aplha).length - 1);
+        }
+
+        console.log(countOccurrences('hello world', 'o')); // 2
+
+        //Merge Two Sorted Arrays
+        function mergeArrays(arr1, arr2){
+            let mergeArr = arr1.concat(arr2);
+            console.log(mergeArr)
+            mergeArr.sort((a, b) => a - b);
+            console.log(mergeArr)
+        }
+
+        mergeArrays([1, 3, 5], [2, 4, 6]);
+
+        // Sum of Array Elements
+        function sumArray(arr){
+            return arr.reduce((acc, currentVal) => acc + currentVal, 0);
+        }
+        console.log(sumArray([1, 2, 3, 4, 5])); // 15
+
+        // Factorial of a Number
+        function factorial(num){
+            if(num <= 1) return 1
+
+            if(num > 1){
+              return   num * factorial(num - 1) //5*4*3*2*1
+            }
+        }
+        console.log(factorial(5));
+
+        //Capitalize the First Letter of Each Word
+        function capitalizeWords(sentence){
+            let splitWord = sentence.split(" ");
+            let updatedWords = splitWord.map((item) => item.charAt(0).toUpperCase() + item.slice(1).toLowerCase()).join(' ');
+            console.log(updatedWords);
+            return updatedWords
+        }
+
+        console.log(capitalizeWords('hello world of web')); 
+
+        //Remove Duplicates from an Array
+         function removeDuplicates(arr){
+            /* let newArr = [];
+            arr.forEach((item, index) => {
+                if(arr.indexOf(item) ===  index){
+                    newArr.push(item)
+                }
+            });
+            return newArr; */
+            return [...new Set(arr)]
+         }
+        console.log(removeDuplicates([1, 2, 2, 3, 4, 4, 5])); // [1, 2, 3, 4, 5]
+
+        //find the large number in Array
+        function findLargest(arr){
+            return Math.max(...arr)
+        }
+
+        console.log(findLargest([1, 2, 3, 4, 5, 1000, 0,])); // 1000
+
+        //. Check for Palindrome
+
+        function isPalindrome(stringTxt){
+            let cleanString = stringTxt.replace(/[^A-Za-z0-9]/g, '').toLowerCase();
+            console.log(cleanString, cleanString.split('').reverse().join(''));
+            return cleanString === cleanString.split('').reverse().join('');
+        }
+
+        console.log(isPalindrome('A man, a plan, a canal: Panama')); // true
+        console.log(isPalindrome('hello')); // false
+    </script>
+</body>
+</html>

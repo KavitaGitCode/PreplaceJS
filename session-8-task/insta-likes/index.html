@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            border: 1px solid #000;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .heart{
+            width: 20px;
+            height: 20px;
+            border-radius: 20px;
+            background-color: #81f0f0;
+            position: absolute;
+            animation-name: showHeart;
+            animation-duration: 2s;
+            animation-timing-function: ease-in-out;
+        }
+
+        @keyframes showHeart{
+            0%{
+                background-color: aqua;
+            }
+            50%{
+                background-color: #81f0f0;
+            }
+            100%{
+                background-color: #fff;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box"></div>
+    </div>
+
+    <script>
+        let box = document.querySelector('.box');
+
+        function createLikes(event){
+            let heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = event.offsetX + 'px'; 
+            heart.style.top = event.offsetY + 'px'; 
+            box.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 3000)
+        }
+
+        box.addEventListener("click", createLikes);
+    </script>
+</body>
+</html>

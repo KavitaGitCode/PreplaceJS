@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       /* function obj(name, location){
+        this.name = name;
+        this.location = location;
+       }
+
+        obj.prototype.address = function(){
+            console.log(`${this.name} is stayed at ${this.location}`)
+        }
+
+        let person1 = new obj("Kavita", "Mumbai");
+
+        person1.address(); */
+
+        /* let inputArray = ["aman", "rahul", "shiva", "gaAtam", 'kavitA']; 
+
+        Array.prototype.capFirstLetter = () => {
+            let result =  this.map((item) => item.charAt(0).toUpperCase() + item.slice(1).toLowerCase())
+            return result;
+        }
+
+        console.log(inputArray.capFirstLetter()); */
+
+        /* let a = 10;
+        {
+        console.log("Start"); //1...Start
+        console.log(a); // 2...10
+        console.log("End"); //3...End
+        let a = 20;
+        }  */
+
+        let arr1 = ["aman", "rahul", "shiva", "gautam"]; 
+
+        function sortName(arr){
+           let result = arr.sort();
+           return result;
+        }
+
+        console.log(sortName(arr1));
+
+        //UNICODE COMAPRE
+        let arr2 = [1, 40, 20, 100, 1000, 200, 300, 30, 4000]; 
+        function numSort(arr){
+           let result = arr.sort((a, b) => a - b);
+           return result;
+        }
+
+        console.log(numSort(arr2));
+
+        function factorial(num){
+            if(isNaN(num)) throw new Error("This is not a number");
+
+            if(num === 1){
+                return 1
+            } else {
+                return num * factorial(num - 1);
+            }
+        }
+        factorial(5) //5*4*3*2*1 : 120
+      
+        //new eg
+        function getMaxLessThanK (n,k){
+    let max = 0;
+    for(let i = 1; i<= n; i++){
+        for(let j = i+1; j <= n; j++){
+            if((i&j)<k) max = Math.max(max,i&j);
+        }
+    }
+    console.log(max);
+    return max;
+}
+
+getMaxLessThanK(5, 2)
+    </script>
+</body>
+</html>

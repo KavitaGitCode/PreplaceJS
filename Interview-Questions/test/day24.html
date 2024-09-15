@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr1 = [1,2, 3, 4];
+        function checkForDuplicateArr(arr){
+            let obj = {};
+            for(let i of arr){
+                if(obj[i]){
+                    obj[i] += 1
+                } else {
+                    obj[i] = 1;
+                }
+            }
+           for(let i in obj){
+                if(obj[i] > 1){
+                    console.log(`key : ${i} is repeated ${obj[i]} times, yes we have repeated arry`);
+                    return true
+                } else {
+                    console.log(`this arry list not have dublicate array`);
+                    return false
+                }
+           }
+        }
+        console.log(checkForDuplicateArr(arr1));
+
+        function findDublicat(arr){
+            let uniqueArr = [...new Set(arr)];
+            if(uniqueArr.size !== arr.length){
+                return false;
+            } else {
+                return true
+            }
+        }
+
+        console.log(findDublicat(arr1));
+
+        //two sums
+        let arr = [7, 2, 1, 3]; 
+        let arr2 = [3,2,4]
+        function sumTwo(arr, target){
+            let mapS = new Map();
+            for(let i in arr){
+               // console.log(arr[i])
+               let pairTarget = target - arr[i];
+               //console.log(pairTarget);
+               if(mapS.has(pairTarget)){
+                //console.log(mapS, 'map'); 
+                console.log(i, arr[i], '---');
+                console.log(i, mapS.get(pairTarget))
+                return [i, mapS.get(pairTarget)]
+               } 
+               mapS.set(arr[i], i);
+            }
+        }
+
+        console.log(sumTwo(arr, 9));
+        //sumTwo(arr, 9)
+
+        
+    </script>
+</body>
+</html>

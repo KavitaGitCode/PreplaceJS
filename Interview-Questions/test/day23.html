@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Node{
+            constructor(value){
+                this.value = value;
+                this.next = null;
+            }
+
+            nextNode(){
+                return this.next++
+            }
+        }
+
+/*         let nodeOne = new Node(1);
+        nodeOne.nextNode();
+        console.log(nodeOne);
+        nodeOne.nextNode();
+        console.log(nodeOne); */
+
+        class SinglyList{
+            constructor(){
+                this.head = null;
+                this.size = 0;
+            }
+
+            add(value){
+                let node = new Node(value);
+                console.log(node, 'node class');
+                node.next = this.head;
+                console.log(node.next, 'node next');
+                this.head = node; 
+                console.log(this.head, 'this.head'); 
+                console.log(node.next);
+                this.size++;
+                console.log(this.head);
+                console.log(this.size)
+                console.log(node.next, 'node next');
+            }
+        }
+
+        let listOne = new SinglyList();
+        listOne.add(5);
+    </script>
+</body>
+</html>

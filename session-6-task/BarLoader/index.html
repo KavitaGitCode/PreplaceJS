@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+           box-sizing: border-box;
+        }
+        body{
+            margin: 0;
+            overflow: hidden;
+        }
+        .boder-box{
+            border-top: 5px solid;
+            position: absolute;
+            color:red;
+            width: 40%;
+            animation-name: translateLine;
+            animation-duration: 5s;
+            animation-iteration-count:infinite;
+            animation-timing-function: linear;
+           /*  transition: transform .5s linear, color .5s linear; */
+        }
+
+        .parent{
+            position: relative;
+            width: 100%;
+            display: flex;
+        }
+
+        @keyframes translateLine{
+            from{ transform: translateX(-200%); color:red;}
+            to{transform: translateX(250%) ; color: yellow;}
+           /*  0%{
+                transform: translateX(-100%); color:red;
+            }
+            80%{
+                transform: translateX(100%); color:orange;
+            }
+            150%{
+                transform: translateX(-250%); color:yellow;
+            } */
+        }    
+    </style>
+</head>
+<body>
+<div class="parent">
+   <div class="boder-box"></div>
+</div>
+</body>
+</html>

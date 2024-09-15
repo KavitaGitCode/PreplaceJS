@@ -1,0 +1,41 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+
+}
+
+.container{
+    display: flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+}
+
+textarea {
+    width: 50%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin:1rem 0 1.5rem;
+    height:100px;
+    padding:1rem
+  }
+
+  #result{
+    text-align: left;
+    width: 50%;
+
+    span{
+        padding:.8rem;
+        background-color: orange;
+        margin:0 .5rem;
+        font-size: .9rem;
+        color:#706315;
+        &.active{
+            background-color: red;
+          }
+    }
+  }
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //recursively BigO :  O(logn) 
+        //loop : time complexity is liner
+        //solution is   O(nlogn) complexity
+
+        function mergeSort(arr){
+            //edge case..devide the array until its length 1
+            if(arr.length < 2) {
+                return arr
+            }
+            //calculate mid
+            let mid = Math.floor(arr.length / 2);
+
+            let lowLeftArr = arr.slice(0, mid);
+            let highRightArr = arr.slice(mid);
+
+            // Recursive calls
+            return merge(mergeSort(lowLeftArr), mergeSort(highRightArr))
+        }
+
+        function merge(leftArr, rightArr){
+            let temp = [];
+            //check leftArr and rightArr not empty
+            while(leftArr.length && rightArr.length) {
+                if(leftArr[0] <= rightArr[0]){
+                    temp.push(leftArr.shift()) //we push and we shift(remove elemetn from corresponding array)
+                } else {
+                    temp.push(rightArr.shift())
+                }
+            }
+            //merge sorted array
+            return [...temp, ...leftArr, ...rightArr];
+
+        }
+        const arr = [3, 34, 5, 89, 8, 5, -2, -5, 99, 1]
+        console.log(mergeSort(arr));
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Question 1: How do you check if an element exists in an array?
+        const words = ['apple', 'banana', 'cherry', 'dragonfruit', 'elderberry'];
+
+      /*   console.log(words.includes('cherry')); */
+
+        function findElement(arr, target){
+            for(let item of arr){
+                /* console.log(item) */
+               if(item === target){
+                return true
+               }
+            }
+            return false
+        }
+
+        console.log(findElement(words, 'sdasd'));
+
+        // Question 2: How do you find the index of an element in an array?
+        console.log(words.indexOf('dragonfruit'))
+
+        const findElementIndex = (arr, target) => {
+            for (let i = 0; i < arr.length; i++){
+                console.log(arr[i])
+                if (arr[i] === target){
+                    return i;
+                }
+            }
+            return -1;
+        }
+        console.log(findElementIndex(words, 'dragonfruit'));
+
+        //Two Sums
+        let nums = [3,2,4], target = 6;
+
+        function twoSum(nums, target){
+            nums.forEach(element => {
+             let abc = target - element;
+             console.log(abc, 'abc'); 
+           });
+        }
+
+       /* let twoSum = function(nums, target) {
+            let newObj = {};
+
+         
+
+           let result = nums.reduce((acc, currentItem, index, array) => {
+                let newArr = [];
+            
+                newObj[currentItem] = index
+
+                console.log(newObj);
+                 if (sum === target ){
+                    newArr.push(index)  
+                } 
+                return newArr
+            }, 0);
+            console.log(result)
+        }; */
+
+        console.log(twoSum(nums, target))
+
+    </script>
+</body>
+</html>

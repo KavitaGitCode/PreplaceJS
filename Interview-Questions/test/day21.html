@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //Exercise 2: Deep Merge Two Objects
+        /* Write a function to deeply merge two objects. If a key exists in both objects,
+         the value from the second object should overwrite the value from the first. */
+        const obj1 = {
+            a: 1,
+            b: {
+                c: 2,
+                d: 3
+            }
+        };
+
+        const obj2 = {
+            b: {
+                c: 4,
+                e: 5
+            },
+            f: 6
+        };
+
+        /* 
+        //result
+        {
+            a: 1,
+            b: {
+                c: 4,
+                d: 3,
+                e: 5
+            },
+            f: 6
+        } */
+
+        let simpleMerge = {
+            ...obj2,
+            ...obj1
+        };
+        console.log(simpleMerge);
+
+        function deepMerge(obj1, obj2) {
+            let result = {};
+
+            // Merge keys from obj1
+            for (let key in obj1) {
+                if (obj1.hasOwnProperty(key)) {
+                    // If both obj1 and obj2 have this key and it's an object, merge them
+                    if (typeof obj1[key] === 'object' && obj2.hasOwnProperty(key) && typeof obj2[key] === 'object' && !
+                        Array.isArray(obj1[key]) && !Array.isArray(obj2[key])) {
+                        result[key] = deepMerge(obj1[key], obj2[key]);
+                    } else {
+                        // Otherwise, take the value from obj1
+                        result[key] = obj1[key];
+                    }
+                }
+            }
+
+            // Merge keys from obj2
+            for (let key in obj2) {
+                if (obj2.hasOwnProperty(key)) {
+                    // If obj1 has already set this key and both are objects, it has already been merged
+                    if (!(key in result)) {
+                        result[key] = obj2[key];
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        // Perform the deep merge
+        const mergedObj = deepMerge(obj1, obj2);
+
+        console.log(mergedObj);
+
+
+        //Exercise 5: Finding Duplicates in an Array
+        const input = [1, 2, 3, 4, 5, 2, 3, 6, 7, 8, 8];
+
+        function findDuplicates(arr) {
+            let newArr = [];
+            let newObj = {};
+
+            for (let i of input) {
+                if (newObj[i]) {
+                    newObj[i] += 1;
+                } else {
+                    newObj[i] = 1;
+                }
+            }
+
+            console.log(newObj);
+
+
+            for (let count in newObj) {
+                if (newObj[count] > 1) {
+                    newArr.push(Number(count));
+                }
+            }
+            console.log(newArr);
+            return newArr
+        }
+
+        findDuplicates(input)
+
+        //Exercise 4: Grouping an Array of Objects
+        const arrInput = [{
+                group: "A",
+                name: "John"
+            },
+            {
+                group: "B",
+                name: "Jane"
+            },
+            {
+                group: "A",
+                name: "Doe"
+            },
+            {
+                group: "C",
+                name: "Jenny"
+            },
+            {
+                group: "C",
+                name: "ketty"
+            }
+        ];
+
+        /* {
+            A: [
+                { group: "A", name: "John" },
+                { group: "A", name: "Doe" }
+            ],
+            B: [
+                { group: "B", name: "Jane" }
+            ]
+        } */
+
+        function groupArr(arrInput) {
+            let newObj = {};
+
+            for (let i = 0; i < arrInput.length; i++) {
+                /* for(let obj in arrInput[i]){
+                    if(obj === "group"){
+                        console.log(arrInput[i])
+                        newObj[arrInput[i][obj]] = [arrInput[i]]
+                    }
+                } */
+                let group = arrInput[i]['group'];
+                //console.log(group);
+                if (!newObj[group]) {
+                    newObj[group] = [];
+                }
+                newObj[group].push(arrInput[i])
+            }
+            console.log(newObj);
+            return newObj;
+        }
+        groupArr(arrInput);
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Ref link: https://dev.to/fpaghar/donesort-an-array-of-objects-ways-in-javascript-48hl</p>
+    <script>
+        let library = [ 
+   {
+       author: 'Bill Gates',
+       title: 'The Road Ahead',
+       readingStatus: true
+   },
+   {
+       author: 'Steve Jobs',
+       title: 'Walter Isaacson',
+       readingStatus: true
+   },
+   {
+       author: 'Suzanne Collins',
+       title:  'Mockingjay: The Final Book of The Hunger Games', 
+       readingStatus: false
+   },
+       {
+       author: 'Kavita',
+       title:  'Ayushvar bolu kahi', 
+       readingStatus: true
+   }, {
+       author: 'Domnic',
+       title:  'Hunger Games', 
+       readingStatus: true
+   }
+];
+
+   let readBookAvailable = library.filter((book) => book.readingStatus);
+   console.log(readBookAvailable);
+
+   let unreadBooks = library.filter((book) => !book.readingStatus);
+   console.log(unreadBooks);
+
+   function bookByAuthor(bookName){
+       let filterByAuthor = library.filter((book) => book.author === bookName);
+       return filterByAuthor; 
+   }
+   console.log(bookByAuthor('Domnic'));
+
+   function booksWithKeyword(keyWord){
+        let filterWithKeyWord = library.filter((book) => book.title.includes(keyWord));
+        return filterWithKeyWord;
+   }
+   console.log(booksWithKeyword('Hunger'));
+
+   function authorsReadBooks(){
+        let authorsRead = library.filter((book) => book.readingStatus).map((book) => book.author);
+        return authorsRead;
+   }
+   console.log(authorsReadBooks())
+
+   function countReadBook(){
+    let readBookAvailable = library.filter((book) => book.readingStatus).length;
+    console.log(readBookAvailable);
+   }
+   countReadBook();
+
+   //Sorting Based Questions
+   //author name in alphabetical order.
+   function bookSortByAuthorName(arr){
+        let sortBookAuthor = arr.sort((a, b) => a.author.localeCompare(b.author));
+        //let sortBookTitle = arr.sort((a, b) => a.title.localeCompare(b.title));
+        return sortBookAuthor
+   }
+   console.log(bookSortByAuthorName(library));
+
+   function updatedLibrary(){
+    const titleToMarkRead = 'Mockingjay: The Final Book of The Hunger Games';
+    let updateLibrary = library.map((book) => {
+      return book.title === titleToMarkRead ? {...book, readingStatus: true} : book
+      /* if(book.title === titleToMarkRead){
+        console.log(book);
+        console.log({...book, readingStatus:true});
+      } */
+    });
+    console.log(updateLibrary)
+    return updateLibrary;
+   }
+   updatedLibrary();
+
+   //add new book to library
+   function addNewBookToLibrary(){
+        let newBook1 =  {
+       author: 'Yiyun Li',
+       title:  'The Book of Goose', 
+       readingStatus: true
+     }
+     //arr.push(newBook1);
+     let updateLibrary = [...library, newBook1];
+     return updateLibrary;
+   }
+   console.log(addNewBookToLibrary());
+
+   //remove by title
+   function removeByTitle(bookTitle){
+       let libraryWithoutBook = library.filter((book) => book.title !== bookTitle);
+       return libraryWithoutBook;
+   }
+   console.log(removeByTitle('Hunger Games'))
+
+   function authorsWithHungerInTitleRead(keyword){
+       let authorWithKeyword =  library.filter((book) => book.title.includes(keyword)).map(book => book.author);
+       return authorWithKeyword;
+   }
+   console.log(authorsWithHungerInTitleRead('Hunger'))
+
+    </script>
+</body>
+</html>

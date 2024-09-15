@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .image-slider{
+            width: 90%;
+            border: 1px solid red;
+            justify-content: flex-start;
+            align-items: center;
+            /* flex-wrap: wrap; */
+            display: flex;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .slider-img{
+            width: 100%;
+            transition: all 0.3s ease;
+            img{
+                /* width: 100%; */
+                transition: all 0.3s ease;
+            }
+        }
+
+        .slider-gallery{
+            position: relative;
+        }
+
+        .prev-btn{
+            position: absolute;
+            top: 7rem;
+        }
+        .next-btn{
+            position: absolute;
+            right: 1.2rem;
+            top: 7rem;
+        }
+
+        .show{
+            display: block;
+        }
+
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider-gallery">
+        <button class="prev-btn">Previous</button>
+        <div class="image-slider">
+            <div class="slider-img show"><img src="https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/aa1b2bdcf519b468.jpg?q=20"/></div>
+            <div class="slider-img"><img src="https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/f39cd50df3682fa7.jpg?q=20"/></div>
+            <div class="slider-img"><img src="https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/511b24085490ff2d.jpg?q=20"/></div>
+            <div class="slider-img"><img src="https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/11cd504bbc3a1493.jpg?q=20"/></div>
+            <div class="slider-img"><img src="https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/7d0c05d5245e0f9b.png?q=20"/></div>
+        </div> 
+        <button class="next-btn">Next</button>
+    </div>
+    
+    <script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const myArray = [
+            { a: 1, b: 2 },
+            { a: 3, b: 4, c: 5 },
+            { a: 6, c: 7 },
+            { d: 8, a: 3, e: 9, z:''}
+        ];
+
+        //output
+        //{ a: [ 1, 3, 6 ], b: [ 2, 4 ], c: [ 5, 7 ] }
+
+        function aggregateValues(arrObj){
+            let obj = {};
+
+            arrObj.forEach((element, index, array) => {
+               for(const[key, value] of Object.entries(element)){
+                    if(!obj[key]){
+                        obj[key] = []; 
+                    } 
+                    obj[key].push(value)
+               }
+            });
+
+            console.log(obj);
+            return obj;
+        }
+
+        aggregateValues(myArray)
+
+        
+        /* Exercise 3: Array to Object Conversion
+Write a function that converts an array of objects into an object where the keys are specified properties of the objects. */
+
+const inputNew = [{
+                id: 1,
+                name: "John"
+            },
+            {
+                id: 2,
+                name: "Jane"
+            },
+            {
+                id: 3,
+                name: "Doe"
+            }
+        ];
+
+        /* {
+            1: { id: 1, name: "John" },
+            2: { id: 2, name: "Jane" },
+            3: { id: 3, name: "Doe" }
+        } */
+
+        function convertObj(arr){
+            let newObj = {};
+            arr.forEach((element) => {
+                for(let [key, value] of Object.entries(element)){
+                    if(key === 'id'){
+                        newObj[value] = element
+                    }
+                }
+            })
+            console.log(newObj);
+            return newObj;
+        }
+
+        convertObj(inputNew);
+    </script>
+</body>
+</html>

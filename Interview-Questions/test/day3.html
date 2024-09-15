@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //Find the Most Frequent Element
+        /*  let max = 0;
+          let maxKey;
+          for(let i in newObj){
+              if(newObj[i] > max){
+                  max = newObj[i];
+                  maxKey = i;
+              }
+          }
+         console.log(maxKey); */
+        function mostFrequentElement(arr) {
+            let obj = {};
+            arr.forEach(element => {
+                if (obj[element]) {
+                    obj[element] += 1;
+                } else {
+                    obj[element] = 1;
+                }
+            });
+            console.log(obj); //{1: 5, 2: 1, 3: 5, 9: 2}
+
+            let getMaxVal = Math.max(...Object.values(obj));
+            /* console.log(getMaxVal) */
+            return Object.keys(obj).filter((key) => obj[key] == getMaxVal) //(2) ['1', '3']
+        }
+
+        // Example usage:
+        console.log(mostFrequentElement([1, 3, 1, 3, 2, 1, 1, 1, 9, 9, 3, 3, 3])); // Output: 1,3
+        console.log(mostFrequentElement([3, 3, 1, 3, 2, 1])); // Output: 3 
+
+
+        //Challenge 2: Group Anagrams
+        function groupAnagrams(words) {
+            // Your code here
+            let objDictionary = {};
+
+            words.forEach((item) => {
+                // sorts the characters of each word to generate a key. Anagrams will have the same sorted key.
+                let key = item.split('').sort().join('');
+                //For example, "eat" and "tea" both become "aet" when sorted.
+
+                if (objDictionary[key]) {
+                    objDictionary[key].push(item)
+                    console.log(objDictionary[key].push(item))
+                } else {
+                    objDictionary[key] = [item];
+                    /*  console.log(objDictionary[key] = [item]) */
+                }
+
+            })
+            console.log(objDictionary);
+            return Object.values(objDictionary);
+        }
+
+        // Example usage:
+        console.log(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]));
+        // Output: [["eat", "tea", "ate"], ["tan", "nat"], ["bat"]]
+
+        //Challenge 5: Flatten Nested Arrays
+        function flattenArray(arr) {
+            // Your code here
+           let result = arr.reduce((acc, currentArr) => {
+            // return  Array.isArray(currentArr) ? flattenArray(currentArr) : currentArr
+           return acc.concat(Array.isArray(currentArr) ? flattenArray(currentArr) : currentArr)
+           }, []);
+
+           return result;
+        }
+        console.log(flattenArray([1, [2, [3, [4, 5]]], 6])); 
+  
+    </script>
+</body>
+
+</html>

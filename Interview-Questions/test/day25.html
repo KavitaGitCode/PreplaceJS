@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //valid anagram
+        const isAnagram = function (s, t) {
+            return s.split('').sort().join('') === t.split('').sort().join('')
+        }
+        /* 
+                console.log(isAnagram('rat', 'tar'));
+                console.log(isAnagram('rat', 'cat')); */
+
+        const isAnagramNew = function (s, t) {
+            if (s.length !== t.length) return;
+
+            let obj = {};
+            for (let aplha in s) {
+                //console.log(s[aplha]);
+                if (obj[s[aplha]]) {
+                    obj[s[aplha]] += 1
+                } else {
+                    obj[s[aplha]] = 1
+                }
+            }
+
+            let anotherObj = {};
+            for (let i in t) {
+                if (anotherObj[t[i]]) {
+                    anotherObj[t[i]] += 1
+                } else {
+                    anotherObj[t[i]] = 1;
+                }
+            }
+
+            for (let keyName in obj) {
+                //console.log(anotherObj[keyName], obj[keyName])
+                if (anotherObj[keyName] !== obj[keyName]) {
+                    return false
+                }
+            }
+
+            return true;
+        }
+
+        console.log(isAnagramNew('rat', 'tar'));
+        //console.log(isAnagramNew('rafttar', 'ratttar'));
+
+        let anagramCheck = function(s, t){
+            if(s.length !== t.length) return false;
+
+            let map = new Map();
+
+            for(let item of s){
+                //console.log(item, s, s[item]);
+                if(map.has(item)){
+                    map.set(item, map.get(item) + 1)
+                } else {
+                    map.set(item, 1);
+                }
+            }
+
+            for(let char of t){
+                if(!map.has(char)){
+                    return false
+                }
+                map.set(char, map.get(char) - 1);
+                if(map.get(char) === 0) {
+                    map.delete(char);
+                    console.log(map, 'delete')
+                }
+            }
+
+            console.log(map);
+
+            if(map.size > 0) return false;
+
+            return true
+        }
+        console.log(anagramCheck('rat', 'tar'));
+        console.log(anagramCheck('rafttar', 'ratttar'));
+    </script>
+</body>
+
+</html>

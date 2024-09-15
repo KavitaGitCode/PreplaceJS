@@ -1,0 +1,71 @@
+:root {
+    --BACKGROUND-COLOR: #a5c34a;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height:100vh
+}
+
+.container {
+    width: 50%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--BACKGROUND-COLOR);
+    padding: 10px;
+}
+
+.form-control{
+    position:relative;
+    width:100%;
+    margin:2rem 0;
+}
+
+.form-control input {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #f9f9f9;
+    background-color: transparent;
+    color: #fff;
+    padding:0.5rem;
+}
+.form-control input:focus {
+    outline: 0;
+}
+
+.form-control label{
+    padding: 8px 0;
+    color:#fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+   transition: transform .2s ease;
+}
+
+form{
+    width:80%;
+}
+
+.form-control input:focus + label span {
+    color: blue;
+    transform: translateY(-30%);
+    /* top:0px; */
+} 
+.form-control label.active {
+    color: blue;
+    transform: translateY(-67%);
+   /*  top:0px; */
+} 
+.form-control label span{
+    display: inline-block;
+    transition: transform .2s ease-in-out;
+}

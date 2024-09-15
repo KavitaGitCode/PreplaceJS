@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+       function selection1() {
+            let arr = [432, 23, 2, 8, 39, 78];
+
+            for (let i = 0; i < arr.length; i++) {
+                let min = i; //compare index
+                //eg i = 423...i+1 = 23...if i = 23 then (i+1) will be 2
+                for (let j = i + 1; j < arr.length; j++) {
+                    //console.log(arr[i], i);
+                    //console.log(j, i)
+                    //console.log(arr[j], arr[i])
+                    //comparison and swap
+                    if (arr[min] > arr[j]) {
+                        min = j
+                    }
+                }
+                [arr[min], arr[i]] = [arr[i], arr[min]];
+            }
+
+            console.log(arr);
+            return arr;
+        }
+        selection1();
+
+        /*            P      min 
+         1st case : [432, 23, 2, 8, 39, 78]; (change) [2, 23, 432, 8, 39, 78]
+                         P      min 
+         2nd case : [2, 23, 432, 8, 39, 78]; (change)  [2, 8, 432, 23, 39, 78]
+                            P   min
+         3rd case : [2, 8, 432, 23, 39, 78]; (change) [2, 8, 23, 432, 39, 78]
+                                 P  min      
+         4th case : [2, 8, 23, 432, 39, 78]; (change) [2, 8, 23, 39, 432, 78]
+                                     P  min
+         5th case : [2, 8, 23, 39, 432, 78]; (change)  [2, 8, 23, 39, 78, 432];
+
+         6th case : [2, 8, 23, 39, 78, 432]; */
+
+
+
+        function selectionSort(arr) {
+            for (let i = 0; i < arr.length; i++) {
+                let min = i;
+                for (let j = i + 1; j < arr.length; j++) {
+                    if (arr[j] < arr[min]) {
+                        min = j
+                    }
+                }
+                //if(min !== i){
+                [arr[min], arr[i]] = [arr[i], arr[min]]
+                //}
+            }
+            console.log(arr, 'sdjhk');
+            return arr;
+        }
+
+        const arr1 = [64, 25, 12, 22, 11];
+        // Display input array 
+        console.log("Original array: " + arr1)
+
+        // Sort array using custom selection sort function 
+        selectionSort(arr1);
+
+        // Display output 
+        console.log("After sorting: " + arr1);
+    </script>
+    <!--  432  : 432
+    23   : 432
+    2  : 432
+    8  : 432
+    39  : 432
+    78   : 432
+
+    432 : 23
+    23: 23
+    2: 23
+    8: 23
+    39: 23
+    78: 23 -->
+
+</body>
+
+</html>

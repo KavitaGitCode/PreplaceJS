@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let p1 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('Hey..i m promise 1');
+            }, 2000)
+        })
+
+        let p2 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('Hey..i m promise 2');
+            }, 4000)
+        })
+
+        //how many times getPromise called inside call stack.... will comes 2 times 
+        /* async function getPromises(){
+            let response = await p2; //after 4 seconds ..then suspend (popout)
+            console.log(response, 'response2');
+
+            let response2 = await p1;
+            console.log(response2, 'response 1') ///after 2 scond then suspend (popout)
+        }
+
+        getPromises(); */
+        p2.then((result) => {
+            p1.then((resultP1) => {
+                console.log(result);
+                console.log(resultP1);
+            })
+        })
+    </script>
+</body>
+</html>

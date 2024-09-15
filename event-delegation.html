@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Event delegation is possible because of event propagation in the DOM, 
+        where the event a child element receives is also passed to the child's parent and ancestors.</p>
+    
+        <p>Event delegation is a technique where you attach a single event listener to a parent element, and that event listener handles events occurring on its child elements. It helps optimize performance and reduce memory consumption.</p>
+        
+    <ul></ul>
+
+    <div class="parentButton">
+        <button>button 1</button>
+    <button>button 2</button>
+    <button>button 3</button>
+    </div>
+    <p class="showButtonTxt"></p>
+    <script>
+        const customUI = document.querySelector('ul');
+
+function responding(evt) {
+    if (evt.target.nodeName === 'li')
+        console.log('Responding')
+}
+
+for (var i = 1; i <= 10; i++) {
+    const newElement = document.createElement('li');
+    newElement.textContent = "This is line " + i;
+    customUI.appendChild(newElement);
+}
+
+customUI.addEventListener('click', responding);
+
+////////////////////////////////////////////////////////////////////////
+
+let getButtons = document.querySelectorAll('button');
+let showButtonTxt = document.querySelector('.showButtonTxt');
+let buttonParent = document.querySelector('.parentButton');
+
+function getTargetButton(event){
+    showButtonTxt.innerText = "Clicked " + event.target.innerText 
+}
+/* 
+getButtons.forEach((button) => {
+    button.addEventListener("click", getTargetButton)
+}) */
+
+//or without looping
+buttonParent.addEventListener("click", getTargetButton)
+    </script>
+</body>
+</html>

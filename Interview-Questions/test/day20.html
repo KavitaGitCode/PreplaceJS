@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//indusind bank interview
+const obj = {
+    address:{
+        name:"test",
+        location:[
+            321312,3213
+        ],
+        subaddress:{
+            line1:"sadasdsa"
+        }
+    }
+}
+/* const output = {
+    address_name:"test",
+    address_location:[321312,3213],
+   address_subaddress_line1:"sadasdsa"
+} */
+
+function formateObj(obj){
+    let newObj = {};
+    function recursiveFormateObj(prefix, data){
+        for(let key in data){
+            if(typeof data[key] === 'object' && !Array.isArray(data[key])) {
+                recursiveFormateObj(`${prefix}_${key}`, data[key])
+            } else {
+                newObj[`${prefix}_${key}`] = data[key]
+            }
+        }
+    }
+    
+    for(let key in obj){
+        recursiveFormateObj(key, obj[key])
+    }
+
+    return newObj;
+}
+
+console.log(formateObj(obj));
+
+//Exercise 1: Flatten a Nested Object
+const input = {
+    a: 1,
+    b: {
+        c: 2,
+        d: {
+            e: 3,
+            f: 4
+        }
+    }
+};
+
+/* {
+    a: 1,
+    b_c: 2,
+    b_d_e: 3,
+    b_d_f: 4
+} */
+
+
+function flattenObj(obj){
+    let newObj = {};
+
+    function formateObj(keysObj, objVal){
+        if(typeof objVal === 'object' && !Array.isArray(objVal)){
+            for(let i in objVal){
+                formateObj(`${keysObj}_${i}`, objVal[i]) 
+            }
+        } else { 
+            newObj[`${keysObj}`] =  objVal;
+        }
+    }
+
+    for(let key in obj){
+        console.log(key, obj[key], typeof obj[key], 'i m from outter loop');
+        formateObj(key, obj[key]);
+    }
+
+    console.log(newObj);
+    return newObj;
+}
+
+flattenObj(input);
+
+
+//
+/* const obj = {
+    address:{
+        name:"test",
+        location:[
+            321312,3213
+        ],
+        subaddress:{
+            line1:"sadasdsa"
+        }
+    }
+}
+
+{
+    address_name:"test",
+    address_location:[321312,3213],
+   address_subaddress_line1:"sadasdsa"
+} */
+
+function formateObject(newObj){
+    let obj = {};
+
+    function isObject(key, object){
+        for(let i in object){
+            /* console.log(i, object[i], 'iiiiiiiiiiiiiiiiiiiii');
+            console.log(key);
+            console.log(typeof object[i], Array.isArray(object[i])); */
+            if(typeof object[i] === 'object' && !Array.isArray(object[i])){
+                isObject(`${key}_${i}`, object[i])
+            } else {
+                obj[`${key}_${i}`] = object[i];
+            }
+        }
+    }
+
+     //loop to get key and value
+    for(let key in newObj){
+        isObject(key, newObj[key]);
+    }
+
+    return obj;
+}
+
+console.log(formateObject(obj))
+
+    </script>
+</body>
+</html>

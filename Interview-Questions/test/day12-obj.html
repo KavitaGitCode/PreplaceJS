@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         let library = [ 
+   {
+       author: 'Bill Gates',
+       title: 'The Road Ahead',
+       readingStatus: true
+   },
+   {
+       author: 'Steve Jobs',
+       title: 'Walter Isaacson',
+       readingStatus: true
+   },
+   {
+       author: 'Suzanne Collins',
+       title:  'Mockingjay: The Final Book of The Hunger Games', 
+       readingStatus: false
+   },
+       {
+       author: 'Kavita',
+       title:  'Ayushvar bolu kahi', 
+       readingStatus: true
+   }, {
+       author: 'Domnic',
+       title:  'Hunger Games', 
+       readingStatus: true
+   },
+   {
+       author: 'Domnic',
+       title:  'Jindgi Toofan Hai', 
+       readingStatus: false
+   }
+];
+
+    function searchByAuthor(authorName){
+        let bookListOfAuthor = library.map((item) => item.author === authorName ? {...item, readingStatus: true} : item);
+        return bookListOfAuthor
+    }
+
+    console.log(searchByAuthor('Domnic'));
+
+    //Problem: Change the title of a specific book.
+    function changeBookTitle(oldbookName, newBookName){
+       /*  let updateBookTitle = library.filter((book) => book.title === oldbookName ? {...book, title: newBookName} : book);
+        return updateBookTitle; */
+        const libraryWithUpdatedTitle = library.map(book => {
+          return  book.title === oldbookName ? { ...book, title: newBookName } : book
+        }
+        );
+        return libraryWithUpdatedTitle;
+    }
+    console.log(changeBookTitle('The Road Ahead', 'Tumhar loogai humar Sajania'));
+
+    //Problem: Add a new property 'yearPublished' to a specific book.
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 12px;
+        }
+
+        h1 {
+        font-size: 1.5em;
+        }
+
+        h2 {
+        font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <p>Some paragraph text</p>
+    <h1>some heading 1 text</h1>
+    <h2>some heading 2 text</h2>
+    <button id="size-12">12</button>
+    <button id="size-14">14</button>
+    <button id="size-16">16</button>
+
+    <script>
+        function addFontSize(param){
+            //return document.body.style.fontSize = `${param}px`;
+            return function(){
+                document.body.style.fontSize = `${param}px`;
+            }
+        }
+
+        const size12 = addFontSize(12);
+        const size14 = addFontSize(14);
+        const size16 = addFontSize(16);
+
+        document.getElementById('size-12').onclick = size12;
+        document.getElementById("size-14").onclick = size14;
+        document.getElementById("size-16").onclick = size16;
+
+        //solution by me
+        function counterNew(){
+            let newValue = 0;
+            return {
+                increment(){
+                    return ++newValue;
+                },
+                decrement() {
+                   return --newValue;
+                },
+                value(){
+                    return newValue;
+                }
+            }
+        };
+
+        //solution by mozila
+      /*   const makeCounter = function () {
+  let privateCounter = 0;
+  function changeBy(val) {
+    privateCounter += val;
+  }
+  return {
+    increment() {
+      changeBy(1);
+    },
+
+    decrement() {
+      changeBy(-1);
+    },
+
+    value() {
+      return privateCounter;
+    },
+  };
+};
+
+const counter1 = makeCounter();
+const counter2 = makeCounter();*/
+
+        let counter = counterNew();
+        console.log(counter.increment()) //1
+        console.log(counter.increment()) //2
+        console.log(counter.increment()) //3
+        console.log(counter.decrement()) //2
+        console.log(counter.value()) //2
+    </script>
+</body>
+</html>

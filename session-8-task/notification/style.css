@@ -1,0 +1,61 @@
+body {
+    position: relative;
+    height: 100vh;
+}
+.toast-message{
+    position: absolute;
+    bottom: 50px;
+    width: 200px;
+    display: none;
+    right: 0;
+    color: #fff;
+    
+}
+
+.toast {
+    padding: 10px;
+    position:relative;
+    margin-bottom: 5px;
+}
+
+.toast:before{
+    position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 0;
+    border-bottom: 5px solid yellow;
+    animation-name: border_anim;
+    animation-duration: 3s;
+    animation-fill-mode:forwards;
+    animation-timing-function:linear;
+    content: '';
+}
+
+@keyframes border_anim {
+	0%{
+		width: 0%;
+	}
+	100%{
+		width: 100%;
+	}
+}
+
+.success{
+    background-color: green;
+    border: 1px solid green;
+}
+
+.error{
+    background-color: red;
+    border: 1px solid red;
+}
+
+.warning{
+    background-color: orange;
+    border: 1px solid orange;
+}
+
+.secondary {
+    background-color: grey;
+    border: 1px solid grey;
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function anangram(str1, str2){
+            if(str1.length !== str2.length) {
+                return false
+            }
+
+            let word1 = str1.replace(/\s/g, '').toLowerCase();
+            let word2 = str2.replace(/\s/g, '').toLowerCase();
+
+            return word1.split('').sort().join('') === word2.split('').sort().join('')
+
+        }
+
+        console.log(anangram('hello', 'lloep'));
+        console.log(anangram('hello', 'lloeh'));
+
+        function anangram2(str1, str2){
+            if(str1.length !== str2.length) {
+                return false
+            }
+
+            let obj = {};
+            for(let stg of str1){
+                if(obj[stg]){
+                    obj[stg] += 1
+                } else {
+                    obj[stg] = 1
+                }
+            }
+
+            for(let item of str2){
+                if(!obj[item]) return false;
+                obj[item] -= 1
+            }
+            return true
+        }
+
+        console.log(anangram2('hello', 'lloep'));
+        console.log(anangram2('hello', 'lloeh'));
+
+        const words = ["dell", "ledl", "abc", "cba", 'boo'];
+        //{abc:[abc,cba], dell:[dell, ledl]}
+        function anagraTest(strg){
+            if(!strg) return
+            return strg.split('').sort().join('');
+        }
+
+        function anagram3(strg){
+            let obj = {};
+            for(let word of strg){
+                let anagramCheck = anagraTest(word);
+                if(obj[anagramCheck]){
+                    obj[anagramCheck].push(word)
+                } else {
+                    obj[anagramCheck] = [word]
+                }
+             }
+             console.log(obj)
+             return obj
+        }
+        anagram3(words)
+        
+    </script>
+</body>
+</html>

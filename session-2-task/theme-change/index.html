@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Chnage</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body class="light-theme-body">
+    <section class="btn-container">
+        <button class="theme-change-btn light-theme-btn" onclick="themeChangeFun()">Change Theme to Dark</button>
+        <div class="radio-container">
+            <label class="switch">
+                <input type="checkbox" id="checkbox-theme">
+                <span class="slider round"></span>
+            </label>
+        </div>
+    </section>
+
+    <script>
+        let themeChangeBtn = document.querySelector('.theme-change-btn');
+        let themeDarkBody = document.querySelector('.dark-theme-body');
+        let themeLightBody = document.querySelector('.light-theme-body');
+        const radioButton = document.querySelector('input[type="checkbox"]');
+
+        function removeTheme(bodyClass, btnClass, themeTxt) {
+            document.body.classList.remove(bodyClass);
+            themeChangeBtn.classList.remove(btnClass);
+            themeChangeBtn.innerHTML = `Change Theme to ${themeTxt}`
+        }
+
+        function addTheme(bodyClass, btnClass, themeTxt) {
+            document.body.classList.add(bodyClass);
+            themeChangeBtn.classList.add(btnClass);
+            themeChangeBtn.innerHTML = `Change Theme to ${themeTxt}`
+        }
+
+        function themeChangeFun() {
+            if (document.body.classList.contains('light-theme-body') && themeChangeBtn.classList.contains(
+                    'light-theme-btn')) {
+                removeTheme('light-theme-body', 'light-theme-btn', 'Dark');
+                addTheme('dark-theme-body', 'dark-theme-btn', 'Light')
+            } else {
+                removeTheme('dark-theme-body', 'dark-theme-btn', 'Light');
+                addTheme('light-theme-body', 'light-theme-btn', 'Dark');
+            }
+        }
+
+        radioButton.addEventListener('change', function () {
+            console.log(this.checked, 'check')
+            if (radioButton.checked) {
+                removeTheme('light-theme-body', 'light-theme-btn', 'Dark');
+                addTheme('dark-theme-body', 'dark-theme-btn', 'Light')
+            } else {
+                removeTheme('dark-theme-body', 'dark-theme-btn', 'Light');
+                addTheme('light-theme-body', 'light-theme-btn', 'Dark');
+            }
+        })
+    </script>
+</body>
+
+</html>
